@@ -1,0 +1,55 @@
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmautokary.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmautokaryedycja.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmdyżurny.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmkierowcy.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmkierowcyedycja.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmkursy.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmkursyedycja.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmlog.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmmiejscowosci.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmmiejscowosciedycja.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmPasazer.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmprzebieg.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmprzebiegedycja.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmtrasy.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmtrasyedycja.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.Properties.Resources.resources
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.csproj.GenerateResource.Cache
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\bin\Debug\Baza_PKS.exe.config
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\bin\Debug\Baza_PKS.exe
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\bin\Debug\Baza_PKS.pdb
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\bin\Debug\EntityFramework.dll
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\bin\Debug\EntityFramework.xml
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.exe
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.pdb
+C:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.csprojResolveAssemblyReference.cache
+D:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\bin\Debug\Baza_PKS.exe.config
+D:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.exe
+D:\Dawid\Studia\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.pdb
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\bin\Debug\Baza_PKS.exe.config
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\bin\Debug\Baza_PKS.exe
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\bin\Debug\Baza_PKS.pdb
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\bin\Debug\EntityFramework.dll
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\bin\Debug\EntityFramework.xml
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.csprojAssemblyReference.cache
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmautokary.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmautokaryedycja.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmdyżurny.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmkierowcy.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmkierowcyedycja.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmkursy.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmkursyedycja.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmlog.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmmiejscowosci.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmmiejscowosciedycja.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmPasazer.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmprzebieg.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmprzebiegedycja.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmtrasy.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.frmtrasyedycja.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.Properties.Resources.resources
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.csproj.GenerateResource.cache
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.csproj.CoreCompileInputs.cache
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.csproj.CopyComplete
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.exe
+D:\Dawid\Studia Koszalin\III rok\II semestr\Aplikacja bazodanowa\Baza_PKS\Baza_PKS\obj\Debug\Baza_PKS.pdb

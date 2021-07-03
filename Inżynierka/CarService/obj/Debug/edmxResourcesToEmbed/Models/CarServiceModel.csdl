@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarRepairServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddresId" />
+    </Key>
+    <Property Name="AddresId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Street" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="HouseNumber" Type="Int32" />
+    <Property Name="FlatNumber" Type="Int32" />
+    <Property Name="ZIP" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CarModel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CarNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="VIN" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+    <Property Name="CarType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Orders" Relationship="CarRepairServiceModel.FK_CarOrder" FromRole="Car" ToRole="Order" />
+  </EntityType>
+  <EntityContainer Name="CarRepairServiceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="Self.Address" />
+    <EntitySet Name="Cars" EntityType="Self.Car" />
+    <EntitySet Name="sysdiagrams" EntityType="CarRepairServiceModel.sysdiagram" />
+    <EntitySet Name="Serviceses" EntityType="CarRepairServiceModel.Services" />
+    <EntitySet Name="Orders" EntityType="CarRepairServiceModel.Order" />
+    <AssociationSet Name="FK_CarOrder" Association="CarRepairServiceModel.FK_CarOrder">
+      <End Role="Car" EntitySet="Cars" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceOrder" Association="CarRepairServiceModel.FK_ServiceOrder">
+      <End Role="Services" EntitySet="Serviceses" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <EntitySet Name="Clients" EntityType="CarRepairServiceModel.Client" />
+    <EntitySet Name="Products" EntityType="CarRepairServiceModel.Product" />
+  </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="ServiceId" />
+    </Key>
+    <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Specification" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Cost" Type="Int32" />
+    <NavigationProperty Name="Orders" Relationship="CarRepairServiceModel.FK_ServiceOrder" FromRole="Services" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SecondName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CarId" Type="Int32" />
+    <Property Name="ServiceId" Type="Int32" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="DataTime" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Car" Relationship="CarRepairServiceModel.FK_CarOrder" FromRole="Order" ToRole="Car" />
+    <NavigationProperty Name="Services" Relationship="CarRepairServiceModel.FK_ServiceOrder" FromRole="Order" ToRole="Services" />
+  </EntityType>
+  <Association Name="FK_CarOrder">
+    <End Type="CarRepairServiceModel.Car" Role="Car" Multiplicity="0..1" />
+    <End Type="CarRepairServiceModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car">
+        <PropertyRef Name="CarId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceOrder">
+    <End Type="CarRepairServiceModel.Services" Role="Services" Multiplicity="0..1" />
+    <End Type="CarRepairServiceModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="ServiceId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Specification" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Int32" />
+  </EntityType>
+</Schema>

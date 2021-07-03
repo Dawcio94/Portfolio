@@ -1,0 +1,13 @@
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\ZeroPlaces\bin\Debug\ZeroPlaces.exe.config
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\ZeroPlaces\bin\Debug\ZeroPlaces.exe
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\ZeroPlaces\bin\Debug\ZeroPlaces.pdb
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\ZeroPlaces\obj\Debug\ZeroPlaces.csprojAssemblyReference.cache
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\ZeroPlaces\obj\Debug\ZeroPlaces.csproj.CoreCompileInputs.cache
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\ZeroPlaces\obj\Debug\ZeroPlaces.exe
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\ZeroPlaces\obj\Debug\ZeroPlaces.pdb
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\Miejsca zerowe\ZeroPlaces\bin\Debug\ZeroPlaces.exe.config
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\Miejsca zerowe\ZeroPlaces\bin\Debug\ZeroPlaces.exe
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\Miejsca zerowe\ZeroPlaces\bin\Debug\ZeroPlaces.pdb
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\Miejsca zerowe\ZeroPlaces\obj\Debug\ZeroPlaces.csprojAssemblyReference.cache
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\Miejsca zerowe\ZeroPlaces\obj\Debug\ZeroPlaces.exe
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\Miejsca zerowe\ZeroPlaces\obj\Debug\ZeroPlaces.pdb

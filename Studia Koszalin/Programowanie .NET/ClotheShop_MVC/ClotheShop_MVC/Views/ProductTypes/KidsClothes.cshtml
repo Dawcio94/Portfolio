@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ClotheShop_MVC.Models.ProductTypes>
+
+
+@{
+    ViewData["Title"] = "Odzież dzięcieca";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2>Odzież dziecięca</h2></center>
+
+<table class="table" >
+    @foreach (ClotheShop_MVC.Models.ProductTypes producttypes in Model)
+    {
+
+        if (producttypes.Name == "TShirt")
+        {
+            <tr style="text-align:center;display:inline-block;font-size:large">
+                <td>
+                    @Html.ActionLink(producttypes.Name, "Tshirt", "Kids")
+                    <img src="@Url.Content("~/Images/"+producttypes.Image3)" class="img-responsive" />
+                </td>
+            </tr>
+        }
+        else
+        {
+            if (producttypes.Name == "Bielizna")
+            {
+                <tr style="text-align:center;display:inline-block;font-size:large">
+                    <td>
+                        @Html.ActionLink(producttypes.Name, "Underwear", "Kids")
+                        <img src="@Url.Content("~/Images/"+producttypes.Image3)" class="img-responsive" />
+                    </td>
+                </tr>
+            }
+            else
+            {
+                if (producttypes.Name == "Koszule")
+                {
+                    <tr style="text-align:center;display:inline-block;font-size:large">
+                        <td>
+                            @Html.ActionLink(producttypes.Name, "Shirt", "Kids")
+                            <img src="@Url.Content("~/Images/"+producttypes.Image3)" class="img-responsive" />
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    if (producttypes.Name == "Kurtki")
+                    {
+
+                        <tr style="text-align:center;display:inline-block;font-size:large">
+                            <td>
+                                @Html.ActionLink(producttypes.Name, "Jacket", "Kids")
+                                <img src="@Url.Content("~/Images/"+producttypes.Image3)" class="img-responsive" />
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+
+                        <tr style="text-align:center;display:inline-block;font-size:large">
+                            <td>
+                                @Html.ActionLink(producttypes.Name, "Shoes", "Kids")
+                                <img src="@Url.Content("~/Images/"+producttypes.Image3)" class="img-responsive" />
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        }
+
+    }
+
+</table>

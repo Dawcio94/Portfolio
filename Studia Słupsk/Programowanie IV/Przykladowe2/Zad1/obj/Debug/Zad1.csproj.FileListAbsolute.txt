@@ -1,0 +1,6 @@
+C:\Users\dawci\Desktop\Przykladowe2\Zad1\bin\Debug\Zad1.exe.config
+C:\Users\dawci\Desktop\Przykladowe2\Zad1\bin\Debug\Zad1.exe
+C:\Users\dawci\Desktop\Przykladowe2\Zad1\bin\Debug\Zad1.pdb
+C:\Users\dawci\Desktop\Przykladowe2\Zad1\obj\Debug\Zad1.csprojAssemblyReference.cache
+C:\Users\dawci\Desktop\Przykladowe2\Zad1\obj\Debug\Zad1.exe
+C:\Users\dawci\Desktop\Przykladowe2\Zad1\obj\Debug\Zad1.pdb

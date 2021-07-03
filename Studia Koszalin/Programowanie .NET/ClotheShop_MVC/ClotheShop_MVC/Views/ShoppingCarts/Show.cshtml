@@ -1,0 +1,42 @@
+﻿@model IEnumerable< ClotheShop_MVC.Models.ShoppingCarts>
+
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.title = "Koszyk";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa:</th>
+            <th>Cena:</th>
+            <th>Usun</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            
+            <tr>
+               
+                <td><h3>@item.DatePurchased</h3> <img src="@Url.Content("~/Images/" +item.ClientID)" /></td>
+                <td><h3>@item.Amount PLN</h3></td>
+                
+                <td><input type="submit" value="Usun" class="btn btn-default" onclick="window.location.href='@Url.Action("Delete","ShoppingCarts",new {id = item.CartID},null)'" /></td>
+</tr>
+        }
+    </tbody>
+   
+    <tr>
+        <td>
+            <h3>Razem:@Model.Sum(i => i.Amount) PLN</h3>
+            <br />
+            @Html.ActionLink("Kontynuuj zakupy", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <input type="submit" value="Potwierdź zamówienie" class="btn btn-default" onclick="window.location.href='@Url.Action("Index", "ShoppingCarts")'" />
+            <br />
+        </td>
+    </tr>
+
+</table>

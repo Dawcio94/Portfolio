@@ -1,0 +1,24 @@
+insert into Agent
+values('1','Konrad','Kowalski','Klicha 14','Gdansk','GD',75890,1500,32);
+insert into Agent
+values('2','Henryk','Nowak','Sucha 13','Olsztyn','NO',98987,2500,45);
+insert into Customer
+values('1','Dawid','Gawinski','Szymanowskiego 8','Slupsk','SL',76200,null);
+insert into Customer
+values('2','Oskar','Gruszczynski','Polna 16','Bialogard','BI',78200,520962785,);
+insert into Engagement
+values('1',2015-10-19,2015-12-31,150000,'1','1','1');
+insert into Engagement
+values('2',2015-10-31,2016-02-29,154000,'2','2','2');
+insert into Entertainer
+values('1','Kolorowe Kredki','Disco','Kula 78','Poznan',76765,2015-10-01);
+insert into Entertainer
+values('2','StoPro','Rap','Cudza 65','Krakow',89546,2015-09-08);
+insert into Entertainer_Member
+values('1','1','2');
+insert into Entertainer_Member
+values('2','2','1');
+insert into Member
+values('1','Anna','Klisza','K');
+insert into Member
+values('2','Patryk','Kubek','M');

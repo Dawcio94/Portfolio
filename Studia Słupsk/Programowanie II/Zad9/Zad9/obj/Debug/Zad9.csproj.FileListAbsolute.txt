@@ -1,0 +1,7 @@
+C:\Users\st609\Desktop\Zad9\Zad9\bin\Debug\Zad9.exe.config
+C:\Users\st609\Desktop\Zad9\Zad9\bin\Debug\Zad9.exe
+C:\Users\st609\Desktop\Zad9\Zad9\bin\Debug\Zad9.pdb
+C:\Users\st609\Desktop\Zad9\Zad9\obj\Debug\Zad9.csprojResolveAssemblyReference.cache
+C:\Users\st609\Desktop\Zad9\Zad9\obj\Debug\Zad9.csproj.CoreCompileInputs.cache
+C:\Users\st609\Desktop\Zad9\Zad9\obj\Debug\Zad9.exe
+C:\Users\st609\Desktop\Zad9\Zad9\obj\Debug\Zad9.pdb

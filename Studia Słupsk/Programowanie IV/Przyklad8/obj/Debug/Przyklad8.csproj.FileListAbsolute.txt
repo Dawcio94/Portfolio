@@ -1,0 +1,6 @@
+D:\Dawid\Studia Słupsk\II rok\I semestr\Programowanie\Przyklad8\bin\Debug\Przyklad8.exe.config
+D:\Dawid\Studia Słupsk\II rok\I semestr\Programowanie\Przyklad8\bin\Debug\Przyklad8.exe
+D:\Dawid\Studia Słupsk\II rok\I semestr\Programowanie\Przyklad8\bin\Debug\Przyklad8.pdb
+D:\Dawid\Studia Słupsk\II rok\I semestr\Programowanie\Przyklad8\obj\Debug\Przyklad8.csprojAssemblyReference.cache
+D:\Dawid\Studia Słupsk\II rok\I semestr\Programowanie\Przyklad8\obj\Debug\Przyklad8.exe
+D:\Dawid\Studia Słupsk\II rok\I semestr\Programowanie\Przyklad8\obj\Debug\Przyklad8.pdb

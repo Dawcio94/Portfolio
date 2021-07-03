@@ -1,0 +1,6 @@
+D:\Dawid\Studia\IV rok\ISD\Zad_2\Zad_2\bin\Debug\Zad_2.exe.config
+D:\Dawid\Studia\IV rok\ISD\Zad_2\Zad_2\bin\Debug\Zad_2.exe
+D:\Dawid\Studia\IV rok\ISD\Zad_2\Zad_2\bin\Debug\Zad_2.pdb
+D:\Dawid\Studia\IV rok\ISD\Zad_2\Zad_2\obj\Debug\Zad_2.csprojResolveAssemblyReference.cache
+D:\Dawid\Studia\IV rok\ISD\Zad_2\Zad_2\obj\Debug\Zad_2.exe
+D:\Dawid\Studia\IV rok\ISD\Zad_2\Zad_2\obj\Debug\Zad_2.pdb

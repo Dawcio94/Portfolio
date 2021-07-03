@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Student>
+  <ID>1</ID>
+  <Name>Dawid</Name>
+  <Semester>1</Semester>
+  <Degrees>
+    <Matma>5</Matma>
+  </Degrees>
+</Student><?xml version="1.0"?>
+<Student>
+  <ID>2</ID>
+  <Name>Piotr</Name>
+  <Semester>2</Semester>
+  <Degrees>
+    <Matma>3</Matma>
+  </Degrees>
+</Student>

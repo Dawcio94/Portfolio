@@ -1,0 +1,7 @@
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad1\Zad1\bin\Debug\Zad1.exe.config
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad1\Zad1\bin\Debug\Zad1.exe
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad1\Zad1\bin\Debug\Zad1.pdb
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad1\Zad1\obj\Debug\Zad1.csprojAssemblyReference.cache
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad1\Zad1\obj\Debug\Zad1.csproj.CoreCompileInputs.cache
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad1\Zad1\obj\Debug\Zad1.exe
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad1\Zad1\obj\Debug\Zad1.pdb

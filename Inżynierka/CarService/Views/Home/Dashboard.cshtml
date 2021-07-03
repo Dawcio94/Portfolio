@@ -1,0 +1,85 @@
+﻿@using CarService.Models
+@model dynamic
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<p>
+    Pojazdy
+</p>
+<table>
+    <tr>
+        <th>Car Model</th>
+        <th>Car Name</th>
+        <th>Car Number</th>
+    </tr>
+    @foreach (var carDetail in Model.Cars)
+    {
+<tr>
+    <td>@carDetail.CarModel</td>
+    <td>@carDetail.CarName</td>
+    <td>@carDetail.CarNumber</td>
+</tr>
+    }
+</table>
+<p>
+    Adresy
+</p>
+<table>
+    <tr>
+        <th>City</th>
+        <th>Street</th>
+        <th>HouseNumber</th>
+    </tr>
+    @foreach (var addressDetail in Model.Addresses)
+    {
+<tr>
+    <td>@addressDetail.City</td>
+    <td>@addressDetail.Street</td>
+    <td>@addressDetail.HouseNumber</td>
+</tr>
+    }
+</table>
+<p>
+    Rezerwacje
+</p>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Second Name</th>
+        <th>CarID</th>
+        <th>ServiceId</th>
+        <th>Phone Number</th>
+        <th>Data Time</th>
+    </tr>
+    @foreach (var orderDetail in Model.Orders)
+    {
+<tr>
+    <td>@orderDetail.FirstName</td>
+    <td>@orderDetail.SecondName</td>
+    <td>@orderDetail.CarId</td>
+    <td>@orderDetail.ServiceId</td>
+    <td>@orderDetail.PhoneNumber</td>
+    <td>@orderDetail.DataTime</td>
+</tr>
+    }
+</table>
+<p>
+    Usługi
+</p>
+
+<table>
+    <tr>
+        <th>Specification</th>
+        <th>Cost</th>
+    </tr>
+    @foreach (var serviceDetail in Model.Serviceses)
+    {
+        <tr>
+            <td>@serviceDetail.Specification</td>
+            <td>@serviceDetail.Cost</td>
+        </tr>
+    }
+</table>

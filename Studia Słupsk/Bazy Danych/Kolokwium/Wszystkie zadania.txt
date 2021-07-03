@@ -1,0 +1,1236 @@
+use db01_badania_rtg;
+
+--001.Wybor wszystkiego
+select *
+from pacjenci
+--002.Wybor okreslonych pol
+select imie,nazwisko,plec
+from pacjenci
+--003.Liczba rekordow
+select COUNT(*)
+from pacjenci
+
+--004.
+select *
+from pacjenci
+where nfz='Opolski'
+
+--005.
+select * 
+from pacjenci
+where nfz='Opolski' or nfz='Slaski'
+
+select *
+from pacjenci 
+where nfz in ('Opolski','Slaski')
+
+--006.
+select *
+from pacjenci 
+where plec='KOBIETA'and ( nfz='Opolski' or nfz='Pomorski')
+
+--007.
+select  imie,pesel 
+from pacjenci
+where imie='Monika' or imie='Julia'
+
+--008.
+SELECT imie,pesel 
+from pacjenci
+where imie='Monika' or imie='Julia'
+order by imie --asc-rosnaco--desc-malejaco
+
+--009.
+select distinct nfz
+from pacjenci
+order by nfz
+
+--010.
+select 1+3
+select 7-2
+select 2*3
+select POWER(2,3)
+select 7%2
+select 6/3
+select 8/3
+select CAST(8 as float)/3--rzutowanie
+select round (4.76,1)
+select floor (4.76)
+ --011.
+ select *
+ from pacjenci
+ where nazwisko like '_a%'
+
+ --012.
+ select *
+ from pacjenci
+ where nazwisko like '%a'
+
+ --013.
+ select * 
+ from pacjenci
+ where nazwisko like '__[c-k]%'
+
+ --014.
+ select *
+ from pacjenci
+ where nazwisko like '___[azr]%'
+ order by nazwisko
+
+ --015.
+ select * 
+ from pacjenci 
+ where pesel like '____1[0-9]%' or pesel like '____20%'
+
+ --016.
+ select SUBSTRING('wszystkorobiacy',7,3)
+
+ --017.
+ select * 
+ from pacjenci
+ where Cast(SUBSTRING(pesel,10,1) as int)%2=0
+
+ --018.
+ select * 
+ from pacjenci
+ where imie not like '_[a-k]%'
+ order by imie
+
+ select *
+ from pacjenci
+ where imie like '_[^a-k]%'
+
+ --019.
+ select *
+ from pacjenci
+ where imie like '_[^c-g]%'
+
+ select *
+ from pacjenci
+ where imie not like '_[c-g]%'
+
+ use db24_varia;
+ select*
+ from pracownicy
+ select *
+from pracownicy
+
+--001.
+select *
+from pracownicy
+where dodatek is null
+
+--002.
+select *
+from pracownicy
+where dodatek is not null and premia is null
+
+--003.Dodatkowe skladniki pensji lacznie
+--Zle rozwiazanie
+select *,dodatek+premia as 'Dodatkowe wynagrodzenie'
+from pracownicy
+
+--Dobre
+select *,(ISNULL(dodatek,0)+Isnull (premia,0) )as 'Dodatkowe wynagrodzenie'
+from pracownicy
+
+--004.Srednia premia wsrod pracownikow na s2
+select AVG(premia) as Srednia
+from pracownicy
+where stanowisko='s2'
+group by stanowisko
+
+--005.Srednia premia wsrod pracownikow na s1
+select
+avg(premia)
+,sum(isnull(premia,100000))
+from pracownicy
+where stanowisko='s1'
+group by stanowisko
+
+--006.Oblicz srednia calkowitego wynagrodzenia na poszczegolnych stanowiskach
+select stanowisko
+,round(avg((isnull(wynagrodzenie_zasadnicze,0)+isnull(dodatek,0)+isnull(premia,0))),2) as Srednia
+from pracownicy
+where stanowisko is not null
+group by stanowisko
+order by Srednia
+select *
+from ankieta
+
+--001.
+select plec
+,Round(AVG(wynagrodzenie),2) as SrednieWynagrodzenie
+,MIN(wynagrodzenie) as MinimalneWynagrodzenie
+,MAX(wynagrodzenie) as MaksymalneWynagrodzenie
+,SUM(wynagrodzenie) as SumaWszystkichPensji
+,COUNT(wynagrodzenie) as LiczbaDanychOPensji
+from ankieta
+group by plec
+
+
+--002.Srednie wynagrodzenie w podziale na plec oraz wyksztalcenie
+select wykszta³cenie 
+,plec
+,round(AVG(wynagrodzenie),2) as SrednieWYnagrodzenie
+
+from ankieta
+group by plec,wykszta³cenie
+order by wykszta³cenie,plec
+
+
+--003.srednie wynagrodzenie w podziale zamieszkanie i wyksztalcenie w grupie osob,ktore nie maja wiedzy ekonomicznej
+select zamieszkanie,wykszta³cenie 
+,round(avg(wynagrodzenie),2) As SrednieWynagrodzenie
+from ankieta
+where wiedza = 'Nie mam wiedzy'
+group by zamieszkanie,wykszta³cenie
+
+--004.Srednie wynagrodzenie oraz minimalne w grupie osob ktore na oszczednosci przeznaczaja conajmniej 10% dochodow w podziale na wyksztalcenie i zamieszkanie
+select wykszta³cenie,zamieszkanie,
+round(avg(wynagrodzenie),2) as SrednieWynagrodzenie,
+MIN(wynagrodzenie) as MinimalneWynagrodzenie
+from ankieta
+where substring(oszczednosci,1,1)='1' or substring(oszczednosci,1,1)='P'
+group by wykszta³cenie,zamieszkanie
+
+--005.
+select *
+from ankieta
+where wiek<=30
+
+--006.ankietowani w wieku od 30 do 40
+select * 
+from ankieta
+where wiek between 30 and 40
+
+--007.ankietowani w wieku do 30 lat lub w wieku pomiedzy 40 a 45 i zarabiajacy ponizej 2850 i mieszkajacy na wsi i bedacy kobieta
+select *
+from ankieta
+where (wiek<30 or (wiek between 40 and 45)) and wynagrodzenie<2850 and zamieszkanie='Wie' and plec='K'
+
+--008.Podac info na ktorym poziomie wyksztalcenia srednie wynagrodzenie jest wieksze niz 2750
+select wykszta³cenie
+from ankieta
+group by wykszta³cenie
+having avg(wynagrodzenie)>2750
+
+--009.Podac te grupy wyksztalcenia w ktorych sredni wiek jest z zakresu od 30 do 50 lat
+select wykszta³cenie,
+round(avg(cast(wiek as float)),2) as SredniaWIeku
+from ankieta
+group by wykszta³cenie
+having avg(cast(wiek as float)) between 30 and 50 
+
+--010.Podac liczbe osob w danym wieku
+select wiek,
+COUNT(wiek) as Liczba
+from ankieta
+group by wiek
+order by wiek
+
+--011.
+select wiek,
+COUNT(wiek) as Liczba
+from ankieta
+group by wiek
+having count(wiek)>=5
+order by wiek
+
+--012.
+select *
+from ankieta
+
+--01.Oznaczenie przynaleznosci wynogrodzeniowej
+select *
+,Case 
+when wynagrodzenie <=3000 Then 'g1'
+when wynagrodzenie >3000 then 'g2'
+else 'nieznaneWynagrodzenie'
+End as GrupaWynagrodzeniowa
+from ankieta
+order by GrupaWynagrodzeniowa
+
+--02.
+select 
+Case 
+when wynagrodzenie <=3000 Then 'g1'
+when wynagrodzenie >3000 then 'g2'
+else 'nieznaneWynagrodzenie'
+End as GrupaWynagrodzeniowa
+,count(*) as liczbaosob
+from ankieta
+group by (
+Case 
+when wynagrodzenie <=3000 Then 'g1'
+when wynagrodzenie >3000 then 'g2'
+else 'nieznaneWynagrodzenie'
+End
+)
+
+--03.na podstawie wieku utworzyc grupy wiekowe
+--Mlodzi-do 30 lat wlacznie,dojrzali-od 30 do 50 wlacznie,starsi-pozostali
+select *
+,Case 
+when wiek <=30 Then 'Mlodzi'
+when wiek between 30 and 50 then 'Dojrzali'
+else 'Starsi'
+End as GrupaWiekowa
+from ankieta
+order by wiek
+
+
+--04.policzyc ile jest w kazdej grupie wiekowej
+select
+Case 
+when wiek <=30 Then 'Mlodzi'
+when wiek between 30 and 50 then 'Dojrzali'
+else 'Starsi'
+End as GrupaWiekowa
+,count(*) as LiczbaOsobWGrupach
+,round((cast(count(*) as real)/(
+			select count(wiek) from ankieta))*100,2)
+as UdzialProcentowy
+from ankieta
+group by(
+Case 
+when wiek <=30 Then 'Mlodzi'
+when wiek between 30 and 50 then 'Dojrzali'
+else 'Starsi'
+End 
+)
+--01.
+Update pacjenci
+set plec='MʯCZYZNA'
+where pesel=38012109293
+
+select * 
+from pacjenci where pesel=38012109293
+
+--02.Zmiana plci na Nulla i nfz na cokolwiek
+Update pacjenci
+set plec=null ,nfz='cokolwiek'
+where pesel=38012109293
+
+select * 
+from pacjenci where pesel=38012109293
+
+--03.aktualizacja wszystkich rekordow
+select *
+from pacjenci
+
+
+Update pacjenci
+set plec=null
+
+--04.Konkatenacja
+select 'Ala '+'ma '+'psa'
+
+--05.
+select * 
+,nazwisko+' '+imie as ImieNazwisko
+from pacjenci
+
+--06.Deklaracja zmiennych
+declare @width int
+set @width=30
+select @width+5
+
+--08.Deklaracja zmiennych
+declare @width int=40
+select @width+5
+
+--09.Zadeklarowac dwie zmienne width i height i obliczy obwod prostokata wyswietlajac teksto tresci: Obwod prostokata o dlugosci X i szerokosci Y wynosi Z
+declare @width int=20,@height int=15
+select 'Obwod prostokata o dlugosci '+cast(@width as varchar)+' i szerokosci '+cast(@height as varchar)+' wynosi '+cast((2*@width+2*@height)as varchar) as Odpowiedz
+
+--10.Aktualna data i czas
+select GETDATE();
+--11.DOdanie 10 dni do daty
+select GETDATE()+10
+--12.wydobycie roku
+select Year(GETDATE())
+--13.wydobycia miesiaca
+select MONTH(GETDATE())
+--14.
+select DATEPART(DAYOFYEAR,getDate())
+--15.
+select DATEPART(WEEKDAY,getDate())
+select DATEPART(WEEK,getDate())
+select DATEPART(QUARTER,getDate())
+select DATEPART(MINUTE,getDate())
+--16.nazwa dnia tygodnia
+select DATENAME(WEEKDAY,GETDATE())
+select DATENAME(MONTH,GETDATE())
+--17.Dodawanie
+select dateadd(day,2,GETDATE())
+select dateadd(MINUTE,10,GETDATE())
+select dateadd(day,2,'2019-10-15 12:35')
+
+--18.Odejmowanie
+select DATEDIFF(Hour,'2019-10-25',Getdate())
+
+--19.
+select DATEADD(day,-1,getdate())
+select * from dbT_12
+
+--01.
+select count(*)
+from dbT_12
+where datepart(day,DataUrodzenia)=13
+
+--02.
+select *
+from dbT_12
+where datepart(day,getdate())=datepart(day,DataUrodzenia) and datepart(MONTH,getdate())=datepart(MONTH,DataUrodzenia)
+
+--03.
+select *
+from dbT_12
+where datepart(day,DataUrodzenia)=13
+--04.
+select count(*) as LiczbaOsob,
+datename(month,DataUrodzenia) as Miesiac
+from dbT_12
+where datepart(day,DataUrodzenia)=13
+group by datename(month,DataUrodzenia),DATEPART(month,DataUrodzenia)
+order by DATEPART(month,DataUrodzenia)
+--05.
+select count(*) as LiczbaOsob,
+DATEPART(quarter,DataUrodzenia)
+from dbT_12
+group by DATEPART(quarter,DataUrodzenia)
+order by DATEPART(quarter,DataUrodzenia)
+--06.
+select count(*) as LiczbaOsob
+,round(avg(cast(datediff(year,DataUrodzenia,GETDATE())as real)),3) as SredniaWieku
+from dbT_12
+where DATEPart(weekDAY,DataUrodzenia)=6
+
+--07.
+select count(*) as LiczbaOsob
+,DATEName(weekDAY,DataUrodzenia) as DzienTygodnia
+from dbT_12
+group by DATEName(weekDAY,DataUrodzenia)
+order by LiczbaOsob Desc
+
+--08.
+select count(*) as LiczbaOsobWGrupach
+,round(cast(count (*) as real)/(select count(*) from dbT_12 where DATENAME(weekday,DataUrodzenia)='Sunday')*100,2)
+from dbT_12
+where DATENAME(weekday,DataUrodzenia)='Sunday'
+group by Plec
+
+--09.
+select count(*)
+from dbT_12
+where datepart(month,DataUrodzenia)=12
+--10.
+select count(*)
+from dbT_12
+where datepart(month,DataUrodzenia)=datepart(month,(dateadd(MONTH,1,GETDATE())))
+--11.
+select count(*)
+from dbT_12
+where datepart(month,DataUrodzenia)=datepart(month,(dateadd(MONTH,1,GETDATE()))) and datediff(year,DataUrodzenia,GETDATE())=50
+--12.
+select
+Case 
+when datepart(day,DataUrodzenia) between 1 and 10 then 'poczatek'
+when datepart(day,DataUrodzenia) between 11 and 20 then 'srodek'
+else 'Koniec'
+end as OkresyMiesiaca,
+count(*) as LiczbaOsobWGrupach
+,round(cast(count (*) as real)/(select count(*) from dbT_12 where DATEpart(month,DataUrodzenia)=12and Plec='Kobieta')*100,2) as UdzialProcentowy
+from dbT_12
+where datepart(month,DataUrodzenia)=12 and Plec='Kobieta'
+group by(Case 
+when datepart(day,DataUrodzenia) between 1 and 10 then 'poczatek'
+when datepart(day,DataUrodzenia) between 11 and 20 then 'srodek'
+else 'Koniec'
+end)
+order by LiczbaOsobWGrupach desc
+--13.
+select count(*),DATename(month,DataUrodzenia)
+from dbT_12
+where DATEPART(day,DataUrodzenia)=1
+group by DATEPART(month,DataUrodzenia),DATename(month,DataUrodzenia)
+order by DATEPART(month,DataUrodzenia)
+--14.
+select count(*),DATename(month,DataUrodzenia)
+from dbT_12
+where DataUrodzenia=EOMONTH(DataUrodzenia)
+group by DATEPART(month,DataUrodzenia),DATename(month,DataUrodzenia)
+order by DATEPART(month,DataUrodzenia)
+--15.
+declare @roznica int
+set @roznica=DATEdiff(year,getdate(),(select DataUrodzenia from dbT_12)) as B
+if @roznica>=20 and @roznica<=25
+select *
+from dbT_12
+--16.
+select *
+from dbT_12
+where DATEPART(month,DataUrodzenia)=10 and DATEPART(year,DataUrodzenia)%10=(2019%10)
+--17.
+select *
+from dbT_12
+where datediff(year,DataUrodzenia,GETDATE())=40 and datepart(month,GETDATE())-DATEPART(month,DataUrodzenia)=6
+--18.
+select *
+from dbT_12
+where datediff(year,DataUrodzenia,GETDATE())=40 and datepart(month,GETDATE())-DATEPART(month,DataUrodzenia)=7
+--19.
+select Plec,count(*) as LiczbaOsobWGrupach
+,round(cast(count (*) as real)/(select count(*) from dbT_12 
+where 
+(datepart(YEAR,GETDATE())-datepart(year,DataUrodzenia)+((DATEPART(month,DataUrodzenia)/cast(datepart(month,GetDate())as real))))>=50.58
+and 
+(datepart(YEAR,GETDATE())-datepart(year,DataUrodzenia)+(DATEPART(month,DataUrodzenia)/cast(datepart(month,GetDate())as real)))<=60.17)*100,2) as UdzialProcentowy
+from dbT_12
+where 
+(datepart(YEAR,GETDATE())-datepart(year,DataUrodzenia)+((DATEPART(month,DataUrodzenia)/cast(datepart(month,GetDate())as real))))>=50.58
+and 
+(datepart(YEAR,GETDATE())-datepart(year,DataUrodzenia)+(DATEPART(month,DataUrodzenia)/cast(datepart(month,GetDate())as real)))<=60.17
+group by Plec
+
+--20.
+select plec,count(*) as IloscOsobUrodzonaWPi¹tek13
+from dbT_12
+where datepart(DAY,DataUrodzenia)=13 and DATENAME(weekday,DataUrodzenia)='Friday'
+group by Plec
+select top 10 *
+from ankieta
+order by wynagrodzenie
+--01.Osoby o najnizszy wynagrodzeniu
+select *
+from ankieta
+where wynagrodzenie=(
+					select MIN(wynagrodzenie)
+					from ankieta
+					)
+--02.Wszystkie najmlodsze osoby
+select *
+from ankieta
+where wiek=(
+			select MIN(wiek)
+			from ankieta
+			)
+--03.Osoby zarabiajace powyzej sredniej
+select *
+from ankieta
+where wynagrodzenie>(select AVG(wynagrodzenie)
+					from ankieta)
+--04.Najmlodsze kobiet
+select *
+from ankieta
+where plec='K' and wiek=(select MIN(wiek)from ankieta
+where plec='K')
+
+--05.Kobiety w wieku najstarszego mezczyzny
+select *
+from ankieta
+where plec='K' and wiek=(select max(wiek) from ankieta
+where plec='M')
+
+--06.Osoby z wynagrodzeniem wiekszym od najwyzszego wynagrodzenia osob ktore nie maja wiedzy
+select *
+from ankieta
+where wynagrodzenie>(select MAX(wynagrodzenie) 
+						from ankieta 
+						where wiedza='nie mam wiedzy')
+order by wynagrodzenie
+
+--07.Osoby ktore zarabiaja conajmniej 2 razy wiecej niz najgorzej wynagradzana osoba z wyksztalceniem podstawowym
+select distinct wykszta³cenie 
+from ankieta
+select *
+from ankieta
+where wynagrodzenie>=2*(select min(wynagrodzenie)
+						from ankieta
+						where wykszta³cenie='Podstawowe')
+
+--08.Osoby o najnizszym wynagrodzeniu kazdej grupie wyksztalcenia
+select distinct wykszta³cenie 
+from ankieta
+select *
+from ankieta
+
+select A.*
+from ankieta as A
+,(select wykszta³cenie,
+		min(wynagrodzenie) as MinimalneWynagrodzenieWDanejGrupie
+	from ankieta
+	group by wykszta³cenie) as B
+	where a.wykszta³cenie=b.wykszta³cenie and a.wynagrodzenie=b.MinimalneWynagrodzenieWDanejGrupie
+	--09.
+select b.wykszta³cenie,COUNT(a.wynagrodzenie)
+from ankieta as A
+,(select wykszta³cenie,
+		min(wynagrodzenie) as MinimalneWynagrodzenieWDanejGrupie
+	from ankieta
+	group by wykszta³cenie) as B
+where a.wykszta³cenie=b.wykszta³cenie and a.wynagrodzenie=b.MinimalneWynagrodzenieWDanejGrupie
+group by b.wykszta³cenie
+--10.osoby ktorych wynagrodzenie jest wieksze od wynagrodzenia wszystkich osob o wyksztalceniu podstawowym
+select *
+from ankieta
+where wynagrodzenie>(select max(wynagrodzenie)
+						from ankieta
+						where wykszta³cenie='Podstawowe')
+--11.Osoby o najwyzszym wynagrodzeniu w danej grupie wyksztalcenia
+select A.*
+from ankieta as A
+,(select wykszta³cenie,
+		max(wynagrodzenie) as MinimalneWynagrodzenieWDanejGrupie
+	from ankieta
+	group by wykszta³cenie) as B
+	where a.wykszta³cenie=b.wykszta³cenie and a.wynagrodzenie=b.MinimalneWynagrodzenieWDanejGrupie
+--12.WYnagrodzenie najstarszego mezczyzny
+select wynagrodzenie
+from ankieta
+where plec='M' and wiek=(select max(wiek)
+									from ankieta
+									where plec='M')
+--13.Znalezc wszystkie grupy wiekowe w ktorych nie ma rowiesnikow
+select wiek
+from ankieta
+group by wiek
+having count(wiek)=1
+order by wiek
+
+--14.osoby ktore nie posiaduja rowiesnikow
+select *
+from ankieta
+where wiek in (select wiek
+from ankieta
+group by wiek
+having count(wiek)=1)
+order by wiek
+
+--15.Lista kobiet i mezczyzn zarabiajacych 1.2 razy wiecej niz srednia w grupie kobiet i odpowiednio w grupie mezczyzn
+select *
+from ankieta as A
+where wynagrodzenie>=1.2*(select avg(wynagrodzenie) 
+							from ankieta as B 
+							where B.plec=A.plec)
+--16.Osoby ktore sa mlodsze od najstarszej osoby o nie wiecej niz 5 lat
+select *
+from ankieta
+where wiek >= (select 
+					max(wiek)
+					from ankieta)-5
+
+
+--TODO
+
+--17.Te osoby ktore zarabiaja wiecej niz najstarszy mezczyzna
+select * 
+from ankieta 
+where wynagrodzenie>(select wynagrodzenie
+					from ankieta
+					where wiek=(select max(wiek)
+								from ankieta
+								where plec='M'))
+order by wynagrodzenie
+--18.Osoby posiadajace takie samo wyksztalcenie jak wiekszosc osob z miasta
+--select * 
+--from ankieta
+--where wykszta³cenie=
+
+--select max(IloscOsobODanymWyksztalceniu),b.wykszta³cenie
+--from ankieta as A,(
+--					select count(wykszta³cenie) as IloscOsobODanymWyksztalceniu,wykszta³cenie
+--					from ankieta 
+--					where zamieszkanie='Miasto'
+--					group by wykszta³cenie) as B
+--group by b.wykszta³cenie
+-- b.IloscOsobODanymWyksztalceniu=max(b.IloscOsobODanymWyksztalceniu) and a.wykszta³cenie=b.wykszta³cenie
+select * 
+from ankieta
+--01.Dla kazdej osovy podac srednie wynagrodzenie w danej grupie wyksztalcenia
+select A.*
+,(select avg(b.wynagrodzenie)
+  from ankieta as B
+  where A.wykszta³cenie=b.wykszta³cenie
+) as SrednieWynagrodzenieWDanejGrupieZawodowej
+from ankieta as A
+--02.Osoby o najnizszym wynagrodzeniu w kazdej z grup wyksztalcenia
+select A.*
+from ankieta as A
+where wynagrodzenie=(select min(wynagrodzenie)
+						from ankieta as B
+						where b.wykszta³cenie=a.wykszta³cenie)
+--------------------------------------------------------
+--Zlaczenia
+--------------------------------------------------------
+
+select *
+from klienci
+
+select *
+from szczegolyTransakcji
+
+select *
+from towary
+
+select *
+from transakcje
+--01.klienci i ich transkacje
+select K.*,T.*
+from klienci as K
+left join transakcje as T
+on k.IdKlienta=t.KlientId
+
+select K.IdKlienta,K.Nazwisko,k.Imie,T.IdTransakcji
+from klienci as K
+left join transakcje as T
+on k.IdKlienta=t.KlientId
+
+--02.Szczegoly transakcji wraz z nazwa towaru
+select *
+from szczegolyTransakcji as ST
+left join towary as T
+on st.TowarID=t.IdTowaru
+
+--03.Szczegoly transakcji dla ktorych nie da sie okreslic nazwy towaru
+select *
+from szczegolyTransakcji as ST
+left join towary as T
+on st.TowarID=t.IdTowaru
+where T.NazwaTowaru is null
+--04.Wartosc kazdej transakcji
+select t.IdTransakcji,sum(st.Ilosc*Tow.CenaJednostkowa) as WartoscpozycjiTransakcji
+from transakcje as T
+join szczegolyTransakcji as ST
+on t.IdTransakcji=st.TransakcjaId
+join towary as Tow
+on st.TowarID=tow.IdTowaru
+group by t.IdTransakcji
+--05.
+select st.*,t.*
+from szczegolyTransakcji as st
+full join towary as T
+on st.TowarID=t.IdTowaru
+--06.
+select k.*,t.*
+from klienci as k
+right join transakcje as T
+on k.IdKlienta=t.KlientId
+
+--01.
+select Ord.Id
+from Orders as Ord
+join OrderItem as OI
+on ord.Id=OI.OrderId
+group by ord.ID
+having count(oi.ProductId)>=5
+--02.
+select Cus.Id,Cus.FirstName,Cus.LastName,Ord.Id as OrderNumber,count(oi.ProductId) as AmounOfProductInOrder
+from Orders as Ord
+join OrderItem as OI
+on ord.Id=OI.OrderId
+join Customer as Cus
+on ord.CustomerId=cus.Id
+group by Cus.Id,Cus.FirstName,Cus.LastName,Ord.Id
+having count(oi.ProductId)>=5
+order by count(oi.ProductId)
+--03.
+select 
+	Cust.Id as customerId
+	,Cust.FirstName
+	,Cust.LastName
+	,count(Ord.Id) numberOfOrdersWithMin5Items
+from Customer as Cust
+join Orders as Ord on Cust.Id=Ord.CustomerId
+join	(select
+		OrderId
+		,count(*) as numberOfItems
+		from OrderItem
+		group by OrderId
+		having count(*)>=5
+		) as moreItemsInBasket on Ord.Id=moreItemsInBasket.OrderId
+group by Cust.Id, Cust.FirstName, Cust.LastName
+
+--04.
+select
+	Cus.id
+	,Cus.FirstName
+	,cus.LastName
+	,Pro.ProductName
+from Customer as Cus
+join Orders as Ord on Cus.Id=Ord.CustomerId
+join OrderItem as OI on Ord.Id=OI.OrderId
+join Product as Pro on Pro.Id=OI.ProductId
+group by Cus.Id,Cus.FirstName,cus.LastName,Pro.ProductName
+having Pro.ProductName='Boston Crab Meat'
+
+--05.
+select
+	Pro.Id as productId
+	,Pro.ProductName
+	,Sup.Id as supplierId
+from Product as Pro
+join Supplier as Sup on Pro.SupplierId=Sup.Id
+where Pro.ProductName in (
+							select
+								ProductName
+								--,count(ProductName)
+							from Product
+							group by ProductName
+							having count(ProductName)>1
+							)
+--06.
+select pr.Id,Pr.ProductName,Sum(oi.Quantity) as Amount
+from Product as Pr
+join OrderItem as oi
+on pr.Id=oi.ProductId
+join Orders as Ord
+on oi.OrderId=Ord.Id
+group by pr.ProductName,pr.Id
+order by Amount
+--07.
+select *
+from Product
+where not exists (select *
+				 from OrderItem
+				 where Product.Id=OrderItem.ProductId
+				 )
+--08.
+select A.Id, A.FirstName, A.LastName, SUM(C.Quantity*C.UnitPrice) as SumaWydanychZlotowek
+from Customer as A 
+left join Orders as B on A.Id=B.CustomerId
+join OrderItem as C on B.Id=C.OrderId
+group by A.Id, A.FirstName, A.LastName
+order by SumaWydanychZlotowek desc
+
+--09.
+select Cus.Id,Cus.FirstName,Cus.LastName,count(ord.Id) as AmountOfOrders
+from Customer as Cus
+left join Orders as Ord
+on cus.Id=Ord.CustomerId
+group by Cus.Id,Cus.FirstName,Cus.LastName
+order by AmountOfOrders
+
+--10.
+select DATEPART(year,ord.OrderDate) as Years,DATEPART(quarter,ord.OrderDate) as Quarters,SUM(ord.TotalAmount) as TotalAmount
+from Orders as ord
+group by DATEPART(year,ord.OrderDate),DATEPART(quarter,ord.OrderDate)
+order by TotalAmount
+--11.--Nie dzia³a
+with cte_Product
+as
+(select count(ord.Id) as AmountOfOrders,DATEPART(year,ord.OrderDate) as Years,DATEPART(quarter,ord.OrderDate) as Quarters,pr.ProductName
+from Product as Pr
+join OrderItem as Oi
+on pr.Id=oi.ProductId
+join Orders as ord
+on oi.OrderId=ord.Id
+group by DATEPART(year,ord.OrderDate),DATEPART(quarter,ord.OrderDate),pr.ProductName
+--order by count(oi.ProductId) desc
+)
+select  top 3 pr.*,cte.AmountOfOrders,cte.Years,cte.Quarters
+from Product as Pr
+join OrderItem as Oi
+on pr.Id=oi.ProductId
+join Orders as ord
+on oi.OrderId=ord.Id
+join cte_Product as cte
+on pr.ProductName=cte.ProductName and DATEPART(year,ord.OrderDate)=cte.Years and DATEPART(quarter,ord.OrderDate)=cte.Quarters
+order by cte.AmountOfOrders desc
+--12.
+select avg(ord.TotalAmount) as AverageAmountOfCost
+from orders as ord
+join customer as cus
+on ord.CustomerId=cus.Id
+where cus.Country='USA'
+--13.
+select
+	Cus.Id
+	,Cus.FirstName
+	,cus.LastName
+	,avg(Ord.TotalAmount)
+from Customer as Cus
+left join Orders as Ord on Cus.Id=Ord.CustomerId
+group by Cus.Id, Cus.FirstName, Cus.LastName
+having avg(Ord.TotalAmount)>	(select 
+									avg(Orders.TotalAmount) 
+								from Orders
+								)
+--14.
+select sup.CompanyName,COUNT(pr.id) as AmountOfProducts
+from Product as pr
+join Supplier as sup
+on pr.SupplierId=sup.Id
+group by sup.CompanyName
+--15.
+select pr.ProductName
+from Product as pr
+join Supplier as sup
+on pr.SupplierId=sup.Id
+where pr.Package like '%bott%'
+--16.
+select sum(oi.Quantity) as Amount,Pr.ProductName,DATEPART(year,ord.OrderDate) as Years,DATEPART(quarter,ord.OrderDate) as Quarters
+from OrderItem as oi
+join Product as pr
+on oi.ProductId=pr.Id
+join Orders as ord
+on oi.OrderId=ord.Id
+where pr.UnitPrice=(select max(UnitPrice)
+					from Product
+					)
+group by DATEPART(year,ord.OrderDate),DATEPART(quarter,ord.OrderDate),pr.UnitPrice,Pr.ProductName
+--17.
+select avg(oi.Quantity) as Amount,Pr.ProductName,DATEPART(year,ord.OrderDate) as Years,DATEPART(quarter,ord.OrderDate) as Quarters
+from OrderItem as oi
+join Product as pr
+on oi.ProductId=pr.Id
+join Orders as ord
+on oi.OrderId=ord.Id
+where pr.UnitPrice=(select max(UnitPrice)
+					from Product
+					)
+group by DATEPART(year,ord.OrderDate),DATEPART(quarter,ord.OrderDate),pr.UnitPrice,Pr.ProductName
+--18.
+select
+	Cus.Id
+	,Cus.FirstName
+	,cus.LastName
+	,sum(OI.Quantity) as totalQuantity
+from Customer as Cus
+join Orders as Ord on Cus.Id=Ord.CustomerId
+join OrderItem as OI on Ord.Id=OI.OrderId
+where OI.Id=(
+			select 
+				distinct (ProductId)
+			from OrderItem 
+			where UnitPrice=( 
+							select
+								max(OrderItem.UnitPrice)
+							from OrderItem
+							)
+			)
+group by Cus.Id, Cus.FirstName, Cus.LastName
+
+
+--19.
+select * 
+
+--20.
+select top 10 cus.Id,cus.FirstName,cus.LastName
+from Customer as cus
+join Orders as ord
+on cus.Id=ord.CustomerId
+group by cus.Id,cus.FirstName,cus.LastName
+order by sum(ord.TotalAmount) desc
+--21.--Nie dzia³a
+select cus.Id,cus.FirstName,cus.LastName,datepart(year,ord.OrderDate)
+from Customer as cus
+join Orders as ord
+on cus.Id=ord.CustomerId
+group by datepart(year,ord.OrderDate),cus.Id,cus.FirstName,cus.LastName
+having count(ord.Id)>=1
+
+select *
+from Orders
+
+--22.
+select cus.*
+from Customer as cus
+join Orders as ord
+on cus.id=ord.CustomerId
+join OrderItem as OI
+on ord.Id=oi.OrderId
+join Product as pr
+on oi.ProductId=pr.Id
+where year(ord.OrderDate)=2013 and pr.ProductName='Tofu'
+--23.
+select cus.Id,cus.FirstName,cus.LastName,sum(oi.Quantity) as AmountofPurchase
+from Customer as cus
+join Orders as ord
+on cus.id=ord.CustomerId
+join OrderItem as OI
+on ord.Id=oi.OrderId
+join Product as pr
+on oi.ProductId=pr.Id
+where year(ord.OrderDate)=2013 and pr.ProductName='Tofu'
+group by cus.Id,cus.FirstName,cus.LastName
+having sum(oi.Quantity)>3
+--24.
+select top 5 pr.ProductName,sum(oi.Quantity) as AmountofPurchaseIn2012
+from Customer as cus
+join Orders as ord
+on cus.id=ord.CustomerId
+join OrderItem as OI
+on ord.Id=oi.OrderId
+join Product as pr
+on oi.ProductId=pr.Id
+where year(ord.OrderDate)=2012 and cus.Country='Usa'
+group by pr.ProductName
+order by sum(oi.Quantity) desc
+--25.
+select sum(oi.UnitPrice*oi.Quantity) as AmountOfProducts,MONTH(ord.OrderDate) as Months,Case
+	when pr.UnitPrice<=20 then 'Price is equal or lower than 20'
+	when pr.UnitPrice>20 then 'Price is higher than 20'
+End
+from Customer as cus
+join Orders as ord
+on cus.id=ord.CustomerId
+join OrderItem as OI
+on ord.Id=oi.OrderId
+join Product as pr
+on oi.ProductId=pr.Id
+where year(ord.OrderDate)=2012
+group by month(ord.OrderDate),(Case
+							when pr.UnitPrice<=20 then 'Price is equal or lower than 20'
+							when pr.UnitPrice>20 then 'Price is higher than 20'
+								End)
+--26.--Nie dzia³a
+select cus.Country,sum(oi.UnitPrice*oi.Quantity) as Amount,pr.ProductName
+from Customer as cus
+join Orders as ord
+on cus.id=ord.CustomerId
+join OrderItem as OI
+on ord.Id=oi.OrderId
+join Product as pr
+on oi.ProductId=pr.Id
+group by pr.ProductName,cus.Country
+having sum(oi.UnitPrice*oi.Quantity)=(select max(UnitPrice*Quantity)
+											from OrderItem
+											group by ProductId)
+
+--27.
+select format(max(ord.OrderDate),'dd/MM/yyyy'),pr.ProductName
+from Customer as cus
+join Orders as ord
+on cus.id=ord.CustomerId
+join OrderItem as OI
+on ord.Id=oi.OrderId
+join Product as pr
+on oi.ProductId=pr.Id
+where pr.IsDiscontinued=1
+group by pr.ProductName
+--28.
+select ProductName,Case
+	when UnitPrice<=20 then 'Price is equal or lower than 20'
+	when UnitPrice>20 then 'Price is higher than 20'
+End
+from Product
+where IsDiscontinued=1
+group by ProductName,(Case
+				when UnitPrice<=20 then 'Price is equal or lower than 20'
+				when UnitPrice>20 then 'Price is higher than 20'
+		  End)
+with cte_AnkietyKobiety
+as
+(
+select 
+wynagrodzenie
+,wiek
+wiedza
+from ankieta
+where plec='K'
+)
+
+select 
+wynagrodzenie
+from cte_AnkietyKobiety
+where wynagrodzenie>2200
+
+--01.Osoby o najnizszym wynagrodzeniu w kazdej grupie wyksztalceniowej
+
+with cte_MinimalneWynagrodzenieWGrupachWyksztalcenia
+as
+(
+select 
+wykszta³cenie
+,min(wynagrodzenie) as MinimalneWynagrodzenie
+from ankieta
+group by wykszta³cenie
+)
+
+select A.*
+from ankieta as A
+join cte_MinimalneWynagrodzenieWGrupachWyksztalcenia as MW on
+A.wykszta³cenie=MW.wykszta³cenie and
+A.wynagrodzenie=MW.MinimalneWynagrodzenie
+
+--02.Widok kobiety ze wsi
+alter View VKobietyWies
+as 
+(
+select 
+wiek
+,plec
+,zamieszkanie
+,wykszta³cenie
+,wiedza
+from ankieta
+where plec='K' and zamieszkanie='Wie'
+)
+
+select
+*
+from VKobietyWies
+
+drop view VKobietyWies
+
+
+--03.Widok - wynagrodzenie i wyksztalcenie-brak mozliwosci orderowania
+
+create view vWynagrodzenieWyksztalcenie
+as 
+(
+select 
+wynagrodzenie
+,wykszta³cenie
+from ankieta
+order by wynagrodzenie
+)
+
+select * 
+from vWynagrodzenieWyksztalcenie
+order by wynagrodzenie
+
+--04.Sortowanie w widoku
+create view vWynagrodzenieWyksztalceniezSortowaniem
+as 
+(
+select top 99.99999999 percent
+wynagrodzenie
+,wykszta³cenie
+from ankieta
+order by wynagrodzenie
+)
+
+select * 
+from vWynagrodzenieWyksztalceniezSortowaniem
+order by wynagrodzenie
+
+--05.Spr czy istnieje widok
+if OBJECT_ID ('vWynagrodzenieWyksztalcenie','v') is not null
+drop view vWynagrodzenieWyksztalcenie
+go
+
+create view vWynagrodzenieWyksztalcenie
+as 
+(
+select 
+wynagrodzenie
+,wykszta³cenie
+,plec
+from ankieta
+)
+
+--Procedury
+--06.Wejscie:0 Wyjscie:0
+create procedure pAktualnyCzas
+as
+(
+select GETDATE()
+)
+
+exec pAktualnyCzas
+--07.Procedura z danymi wejsciowymi
+alter procedure pLiczbaLosowaZPrzedzialu
+--Generowanie liczby losowej z przedzialu od a do b
+--Wejscie:2 Wyjscie:0
+@a int,
+@b int
+as
+	select round((@b-@a)*RAND()+@a,0)
+
+
+exec pLiczbaLosowaZPrzedzialu 5,10 
+
+--08.Procedura z parametrami wyjsciowymi
+--Wejscie:0 Wyjscie:2
+--Zwracanie daty i czas
+alter procedure pDataCzas
+@aktualnadata date out,
+@aktualnyczas time output
+as
+set @aktualnadata=convert(date,getdate())
+set @aktualnyczas=CONVERT(time,getdate())
+
+select @aktualnadata,@aktualnyczas
+go
+--Wywolanie procedury 08
+--Rozw.1
+declare @d date
+declare @c time
+
+exec pDataCzas @aktualnadata=@d out,@aktualnyczas=@c out
+
+--Rozw.2
+declare @d date
+declare @c time
+exec pDataCzas @d out,@c out
+
+--09.Procedura z parametrami wejsciowymi i wyjsciowymi
+--Wejscie:2 Wyjscie:2
+--Generowanie dwoch liczb liczb losowych od a do b zakresie
+create procedure pDwieLiczbyLosowe
+@a int,
+@b int,
+@pierliczba real out,
+@drugaliczba real out
+as
+	set @pierliczba=(@b-@a)*RAND()+@a
+	set @drugaliczba=(@b-@a)*RAND()+@a
+select @pierliczba as 'Pierwsza liczba losowa',
+	   @drugaliczba as 'Druga liczba losowa'
+go
+
+declare @x1 as real
+declare @x2 as real
+exec pDwieLiczbyLosowe 20,40,@x1 out,@x2 out
+
+--10.INformacja o rezultacie dzialania procedury
+alter procedure pRezultatDzialaniaProcedury
+@a as real,
+@b as real
+as
+declare @temp real
+	begin
+		begin try
+			set @temp= @a/@b
+			return 1
+		end try
+		begin catch
+		return 0
+		end catch
+	end
+go
+--#1
+exec pRezultatDzialaniaProcedury 3,0
+
+--#2
+declare @resultCode int
+exec @resultCode=pRezultatDzialaniaProcedury 3,0
+print @resultCode
+
+--11.Tabela ankieta. Procedura aktualizujaca wynagrodzenie(podniesienie wynagrodzenia o podana wartosc)
+alter procedure pAktualizujWynagrodzenie
+	@wysokoscpodwyzki real
+as
+	begin
+		begin try
+				Update ankieta
+				set wynagrodzenie=wynagrodzenie+(@wysokoscpodwyzki/0)
+				return 1
+		end try
+
+		begin catch
+				return 0
+		end catch
+	end
+go
+declare @resultCode int
+exec @resultCode=pAktualizujWynagrodzenie 10000
+print @resultCode
+select wynagrodzenie
+from ankieta
+
+
+

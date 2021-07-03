@@ -1,0 +1,503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Baza_PKSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Autokar">
+          <Key>
+            <PropertyRef Name="Id_autokaru" />
+          </Key>
+          <Property Name="Id_autokaru" Type="numeric" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_kursu" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Nr_rejestr" Type="varchar" MaxLength="9" />
+          <Property Name="Marka" Type="varchar" MaxLength="15" />
+          <Property Name="Model" Type="varchar" MaxLength="15" />
+          <Property Name="Liczba_miejsc" Type="numeric" Precision="2" Scale="0" />
+        </EntityType>
+        <EntityType Name="Kierowca">
+          <Key>
+            <PropertyRef Name="Id_kierowcy" />
+          </Key>
+          <Property Name="Id_kierowcy" Type="numeric" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_kursu" Type="numeric" Precision="2" Scale="0" />
+          <Property Name="Imie_Nazwisko" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Kurs">
+          <Key>
+            <PropertyRef Name="Id_kursu" />
+          </Key>
+          <Property Name="Id_kursu" Type="numeric" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_trasy" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Oznaczenie" Type="varchar" MaxLength="10" />
+          <Property Name="Data_kursu" Type="date" />
+          <Property Name="Ilość_pasażerów" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="Godzina_rozpoczecia" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Miejscowości">
+          <Key>
+            <PropertyRef Name="Id_miejscowosci" />
+          </Key>
+          <Property Name="Id_miejscowosci" Type="numeric" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa_miejscowosci" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Przebieg">
+          <Key>
+            <PropertyRef Name="Id_przebiegu" />
+          </Key>
+          <Property Name="Id_przebiegu" Type="numeric" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_miejscowosci" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Id_trasy" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Roznica_czasu" Type="time" Precision="7" />
+          <Property Name="Kolejnosc" Type="numeric" Precision="2" Scale="0" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Trasa">
+          <Key>
+            <PropertyRef Name="Id_trasy" />
+          </Key>
+          <Property Name="Id_trasy" Type="numeric" Precision="2" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_miejscowosci_poczatek" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Id_miejscowosci_koniec" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Oznaczenie_trasy" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK_Autokar_Kurs">
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="1" />
+          <End Role="Autokar" Type="Self.Autokar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurs">
+              <PropertyRef Name="Id_kursu" />
+            </Principal>
+            <Dependent Role="Autokar">
+              <PropertyRef Name="Id_kursu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kierowca_Kurs1">
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="0..1" />
+          <End Role="Kierowca" Type="Self.Kierowca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurs">
+              <PropertyRef Name="Id_kursu" />
+            </Principal>
+            <Dependent Role="Kierowca">
+              <PropertyRef Name="Id_kursu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kurs_Trasa">
+          <End Role="Trasa" Type="Self.Trasa" Multiplicity="1" />
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trasa">
+              <PropertyRef Name="Id_trasy" />
+            </Principal>
+            <Dependent Role="Kurs">
+              <PropertyRef Name="Id_trasy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Przebieg_Miejscowości">
+          <End Role="Miejscowości" Type="Self.Miejscowości" Multiplicity="1" />
+          <End Role="Przebieg" Type="Self.Przebieg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Miejscowości">
+              <PropertyRef Name="Id_miejscowosci" />
+            </Principal>
+            <Dependent Role="Przebieg">
+              <PropertyRef Name="Id_miejscowosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Przebieg_Trasa">
+          <End Role="Trasa" Type="Self.Trasa" Multiplicity="1" />
+          <End Role="Przebieg" Type="Self.Przebieg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trasa">
+              <PropertyRef Name="Id_trasy" />
+            </Principal>
+            <Dependent Role="Przebieg">
+              <PropertyRef Name="Id_trasy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trasa_Miejscowości">
+          <End Role="Miejscowości" Type="Self.Miejscowości" Multiplicity="1" />
+          <End Role="Trasa" Type="Self.Trasa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Miejscowości">
+              <PropertyRef Name="Id_miejscowosci" />
+            </Principal>
+            <Dependent Role="Trasa">
+              <PropertyRef Name="Id_miejscowosci_poczatek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trasa_Miejscowości1">
+          <End Role="Miejscowości" Type="Self.Miejscowości" Multiplicity="1" />
+          <End Role="Trasa" Type="Self.Trasa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Miejscowości">
+              <PropertyRef Name="Id_miejscowosci" />
+            </Principal>
+            <Dependent Role="Trasa">
+              <PropertyRef Name="Id_miejscowosci_koniec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Baza_PKSModelStoreContainer">
+          <EntitySet Name="Autokar" EntityType="Self.Autokar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kierowca" EntityType="Self.Kierowca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kurs" EntityType="Self.Kurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Miejscowości" EntityType="Self.Miejscowości" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Przebieg" EntityType="Self.Przebieg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trasa" EntityType="Self.Trasa" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Autokar_Kurs" Association="Self.FK_Autokar_Kurs">
+            <End Role="Kurs" EntitySet="Kurs" />
+            <End Role="Autokar" EntitySet="Autokar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kierowca_Kurs1" Association="Self.FK_Kierowca_Kurs1">
+            <End Role="Kurs" EntitySet="Kurs" />
+            <End Role="Kierowca" EntitySet="Kierowca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kurs_Trasa" Association="Self.FK_Kurs_Trasa">
+            <End Role="Trasa" EntitySet="Trasa" />
+            <End Role="Kurs" EntitySet="Kurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Przebieg_Miejscowości" Association="Self.FK_Przebieg_Miejscowości">
+            <End Role="Miejscowości" EntitySet="Miejscowości" />
+            <End Role="Przebieg" EntitySet="Przebieg" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Przebieg_Trasa" Association="Self.FK_Przebieg_Trasa">
+            <End Role="Trasa" EntitySet="Trasa" />
+            <End Role="Przebieg" EntitySet="Przebieg" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trasa_Miejscowości" Association="Self.FK_Trasa_Miejscowości">
+            <End Role="Miejscowości" EntitySet="Miejscowości" />
+            <End Role="Trasa" EntitySet="Trasa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trasa_Miejscowości1" Association="Self.FK_Trasa_Miejscowości1">
+            <End Role="Miejscowości" EntitySet="Miejscowości" />
+            <End Role="Trasa" EntitySet="Trasa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Baza_PKSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Autokar">
+          <Key>
+            <PropertyRef Name="Id_autokaru" />
+          </Key>
+          <Property Name="Id_autokaru" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_kursu" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Nr_rejestr" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Marka" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Liczba_miejsc" Type="Decimal" Precision="2" Scale="0" />
+          <NavigationProperty Name="Kurs" Relationship="Self.FK_Autokar_Kurs" FromRole="Autokar" ToRole="Kurs" />
+        </EntityType>
+        <EntityType Name="Kierowca">
+          <Key>
+            <PropertyRef Name="Id_kierowcy" />
+          </Key>
+          <Property Name="Id_kierowcy" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_kursu" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="Imie_Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Kurs" Relationship="Self.FK_Kierowca_Kurs1" FromRole="Kierowca" ToRole="Kurs" />
+        </EntityType>
+        <EntityType Name="Kurs">
+          <Key>
+            <PropertyRef Name="Id_kursu" />
+          </Key>
+          <Property Name="Id_kursu" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_trasy" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Oznaczenie" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Data_kursu" Type="DateTime" Precision="0" />
+          <Property Name="Ilość_pasażerów" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Godzina_rozpoczecia" Type="Time" Precision="7" />
+          <NavigationProperty Name="Autokar" Relationship="Self.FK_Autokar_Kurs" FromRole="Kurs" ToRole="Autokar" />
+          <NavigationProperty Name="Kierowca" Relationship="Self.FK_Kierowca_Kurs1" FromRole="Kurs" ToRole="Kierowca" />
+          <NavigationProperty Name="Trasa" Relationship="Self.FK_Kurs_Trasa" FromRole="Kurs" ToRole="Trasa" />
+        </EntityType>
+        <EntityType Name="Miejscowości">
+          <Key>
+            <PropertyRef Name="Id_miejscowosci" />
+          </Key>
+          <Property Name="Id_miejscowosci" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa_miejscowosci" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Przebieg" Relationship="Self.FK_Przebieg_Miejscowości" FromRole="Miejscowości" ToRole="Przebieg" />
+          <NavigationProperty Name="Trasa" Relationship="Self.FK_Trasa_Miejscowości" FromRole="Miejscowości" ToRole="Trasa" />
+          <NavigationProperty Name="Trasa1" Relationship="Self.FK_Trasa_Miejscowości1" FromRole="Miejscowości" ToRole="Trasa" />
+        </EntityType>
+        <EntityType Name="Przebieg">
+          <Key>
+            <PropertyRef Name="Id_przebiegu" />
+          </Key>
+          <Property Name="Id_przebiegu" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_miejscowosci" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Id_trasy" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Roznica_czasu" Type="Time" Precision="7" />
+          <Property Name="Kolejnosc" Type="Decimal" Precision="2" Scale="0" />
+          <NavigationProperty Name="Miejscowości" Relationship="Self.FK_Przebieg_Miejscowości" FromRole="Przebieg" ToRole="Miejscowości" />
+          <NavigationProperty Name="Trasa" Relationship="Self.FK_Przebieg_Trasa" FromRole="Przebieg" ToRole="Trasa" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Trasa">
+          <Key>
+            <PropertyRef Name="Id_trasy" />
+          </Key>
+          <Property Name="Id_trasy" Type="Decimal" Precision="2" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_miejscowosci_poczatek" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Id_miejscowosci_koniec" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="Oznaczenie_trasy" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Kurs" Relationship="Self.FK_Kurs_Trasa" FromRole="Trasa" ToRole="Kurs" />
+          <NavigationProperty Name="Miejscowości" Relationship="Self.FK_Trasa_Miejscowości" FromRole="Trasa" ToRole="Miejscowości" />
+          <NavigationProperty Name="Miejscowości1" Relationship="Self.FK_Trasa_Miejscowości1" FromRole="Trasa" ToRole="Miejscowości" />
+          <NavigationProperty Name="Przebieg" Relationship="Self.FK_Przebieg_Trasa" FromRole="Trasa" ToRole="Przebieg" />
+        </EntityType>
+        <Association Name="FK_Autokar_Kurs">
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="1" />
+          <End Role="Autokar" Type="Self.Autokar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurs">
+              <PropertyRef Name="Id_kursu" />
+            </Principal>
+            <Dependent Role="Autokar">
+              <PropertyRef Name="Id_kursu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kierowca_Kurs1">
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="0..1" />
+          <End Role="Kierowca" Type="Self.Kierowca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurs">
+              <PropertyRef Name="Id_kursu" />
+            </Principal>
+            <Dependent Role="Kierowca">
+              <PropertyRef Name="Id_kursu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kurs_Trasa">
+          <End Role="Trasa" Type="Self.Trasa" Multiplicity="1" />
+          <End Role="Kurs" Type="Self.Kurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trasa">
+              <PropertyRef Name="Id_trasy" />
+            </Principal>
+            <Dependent Role="Kurs">
+              <PropertyRef Name="Id_trasy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Przebieg_Miejscowości">
+          <End Role="Miejscowości" Type="Self.Miejscowości" Multiplicity="1" />
+          <End Role="Przebieg" Type="Self.Przebieg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Miejscowości">
+              <PropertyRef Name="Id_miejscowosci" />
+            </Principal>
+            <Dependent Role="Przebieg">
+              <PropertyRef Name="Id_miejscowosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trasa_Miejscowości">
+          <End Role="Miejscowości" Type="Self.Miejscowości" Multiplicity="1" />
+          <End Role="Trasa" Type="Self.Trasa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Miejscowości">
+              <PropertyRef Name="Id_miejscowosci" />
+            </Principal>
+            <Dependent Role="Trasa">
+              <PropertyRef Name="Id_miejscowosci_poczatek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trasa_Miejscowości1">
+          <End Role="Miejscowości" Type="Self.Miejscowości" Multiplicity="1" />
+          <End Role="Trasa" Type="Self.Trasa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Miejscowości">
+              <PropertyRef Name="Id_miejscowosci" />
+            </Principal>
+            <Dependent Role="Trasa">
+              <PropertyRef Name="Id_miejscowosci_koniec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Przebieg_Trasa">
+          <End Role="Trasa" Type="Self.Trasa" Multiplicity="1" />
+          <End Role="Przebieg" Type="Self.Przebieg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trasa">
+              <PropertyRef Name="Id_trasy" />
+            </Principal>
+            <Dependent Role="Przebieg">
+              <PropertyRef Name="Id_trasy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Baza_PKSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Autokar" EntityType="Self.Autokar" />
+          <EntitySet Name="Kierowca" EntityType="Self.Kierowca" />
+          <EntitySet Name="Kurs" EntityType="Self.Kurs" />
+          <EntitySet Name="Miejscowości" EntityType="Self.Miejscowości" />
+          <EntitySet Name="Przebieg" EntityType="Self.Przebieg" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Trasa" EntityType="Self.Trasa" />
+          <AssociationSet Name="FK_Autokar_Kurs" Association="Self.FK_Autokar_Kurs">
+            <End Role="Kurs" EntitySet="Kurs" />
+            <End Role="Autokar" EntitySet="Autokar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kierowca_Kurs1" Association="Self.FK_Kierowca_Kurs1">
+            <End Role="Kurs" EntitySet="Kurs" />
+            <End Role="Kierowca" EntitySet="Kierowca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kurs_Trasa" Association="Self.FK_Kurs_Trasa">
+            <End Role="Trasa" EntitySet="Trasa" />
+            <End Role="Kurs" EntitySet="Kurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Przebieg_Miejscowości" Association="Self.FK_Przebieg_Miejscowości">
+            <End Role="Miejscowości" EntitySet="Miejscowości" />
+            <End Role="Przebieg" EntitySet="Przebieg" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trasa_Miejscowości" Association="Self.FK_Trasa_Miejscowości">
+            <End Role="Miejscowości" EntitySet="Miejscowości" />
+            <End Role="Trasa" EntitySet="Trasa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trasa_Miejscowości1" Association="Self.FK_Trasa_Miejscowości1">
+            <End Role="Miejscowości" EntitySet="Miejscowości" />
+            <End Role="Trasa" EntitySet="Trasa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Przebieg_Trasa" Association="Self.FK_Przebieg_Trasa">
+            <End Role="Trasa" EntitySet="Trasa" />
+            <End Role="Przebieg" EntitySet="Przebieg" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Baza_PKSModelStoreContainer" CdmEntityContainer="Baza_PKSEntities">
+          <EntitySetMapping Name="Autokar">
+            <EntityTypeMapping TypeName="Baza_PKSModel.Autokar">
+              <MappingFragment StoreEntitySet="Autokar">
+                <ScalarProperty Name="Id_autokaru" ColumnName="Id_autokaru" />
+                <ScalarProperty Name="Id_kursu" ColumnName="Id_kursu" />
+                <ScalarProperty Name="Nr_rejestr" ColumnName="Nr_rejestr" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Liczba_miejsc" ColumnName="Liczba_miejsc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kierowca">
+            <EntityTypeMapping TypeName="Baza_PKSModel.Kierowca">
+              <MappingFragment StoreEntitySet="Kierowca">
+                <ScalarProperty Name="Id_kierowcy" ColumnName="Id_kierowcy" />
+                <ScalarProperty Name="Id_kursu" ColumnName="Id_kursu" />
+                <ScalarProperty Name="Imie_Nazwisko" ColumnName="Imie_Nazwisko" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kurs">
+            <EntityTypeMapping TypeName="Baza_PKSModel.Kurs">
+              <MappingFragment StoreEntitySet="Kurs">
+                <ScalarProperty Name="Id_kursu" ColumnName="Id_kursu" />
+                <ScalarProperty Name="Id_trasy" ColumnName="Id_trasy" />
+                <ScalarProperty Name="Oznaczenie" ColumnName="Oznaczenie" />
+                <ScalarProperty Name="Data_kursu" ColumnName="Data_kursu" />
+                <ScalarProperty Name="Ilość_pasażerów" ColumnName="Ilość_pasażerów" />
+                <ScalarProperty Name="Godzina_rozpoczecia" ColumnName="Godzina_rozpoczecia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Miejscowości">
+            <EntityTypeMapping TypeName="Baza_PKSModel.Miejscowości">
+              <MappingFragment StoreEntitySet="Miejscowości">
+                <ScalarProperty Name="Id_miejscowosci" ColumnName="Id_miejscowosci" />
+                <ScalarProperty Name="Nazwa_miejscowosci" ColumnName="Nazwa_miejscowosci" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Przebieg">
+            <EntityTypeMapping TypeName="Baza_PKSModel.Przebieg">
+              <MappingFragment StoreEntitySet="Przebieg">
+                <ScalarProperty Name="Id_przebiegu" ColumnName="Id_przebiegu" />
+                <ScalarProperty Name="Id_miejscowosci" ColumnName="Id_miejscowosci" />
+                <ScalarProperty Name="Id_trasy" ColumnName="Id_trasy" />
+                <ScalarProperty Name="Roznica_czasu" ColumnName="Roznica_czasu" />
+                <ScalarProperty Name="Kolejnosc" ColumnName="Kolejnosc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Baza_PKSModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trasa">
+            <EntityTypeMapping TypeName="Baza_PKSModel.Trasa">
+              <MappingFragment StoreEntitySet="Trasa">
+                <ScalarProperty Name="Id_trasy" ColumnName="Id_trasy" />
+                <ScalarProperty Name="Id_miejscowosci_poczatek" ColumnName="Id_miejscowosci_poczatek" />
+                <ScalarProperty Name="Id_miejscowosci_koniec" ColumnName="Id_miejscowosci_koniec" />
+                <ScalarProperty Name="Oznaczenie_trasy" ColumnName="Oznaczenie_trasy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

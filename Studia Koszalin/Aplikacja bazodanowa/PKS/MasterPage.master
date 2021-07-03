@@ -1,0 +1,83 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Baza PKS</title>
+    <link rel="stylesheet" href="Styles/StyleSheet.css" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div id="wrapper">
+                <div id="banner">
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Obrazy/banner2.jpg" Width="100%" />
+                </div>
+                <div>
+                </div>
+                <div id="navigation1">
+                    <ul id="nav1">
+                        <li style="float: right">
+                            <asp:HyperLink runat="server" NavigateUrl="~/Strony/Pasazer.aspx">Wyloguj</asp:HyperLink></li>
+                        <li style="float: right">
+                           <asp:Image ID="Image9" runat="server" ImageUrl="~/Obrazy/logout.png" Height="30px" Width="53px" />
+                       </li>
+                        
+                    </ul>
+                </div>
+                <div id="navigation">
+                    
+                    <ul id="nav">
+                       <li>
+                           <asp:Image ID="Image2" runat="server" ImageUrl="~/Obrazy/logo.png" />
+                       </li>
+                        <li></li>
+                        <li>
+                           <asp:Image ID="Image3" runat="server" ImageUrl="~/Obrazy/__bus_autokar.png" Height="30px" Width="53px" />
+                       </li>
+                        <li>
+                            <asp:HyperLink runat="server" NavigateUrl="~/Strony/Autokary.aspx">Autokary</asp:HyperLink></li>
+                        <li>
+                           <asp:Image ID="Image4" runat="server" ImageUrl="~/Obrazy/kierowca-kurier.png" Height="30px" Width="53px" />
+                       </li>
+                        <li>
+                            <asp:HyperLink runat="server" NavigateUrl="~/Strony/Kierowca.aspx">Kierowcy</asp:HyperLink></li>
+                        <li>
+                           <asp:Image ID="Image6" runat="server" ImageUrl="~/Obrazy/PL_clip_image005.jpg" Height="30px" Width="53px" />
+                       </li>
+                        <li>
+                            <asp:HyperLink runat="server" NavigateUrl="~/Strony/Trasy.aspx">Trasy</asp:HyperLink></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                      
+                        <li>
+                           <asp:Image ID="Image5" runat="server" ImageUrl="~/Obrazy/zegar-atomowy.png" Height="30px" Width="53px" />
+                       </li>
+                        
+                        <li>
+                            <asp:HyperLink runat="server" NavigateUrl="~/Strony/Kursy.aspx">Kursy</asp:HyperLink></li>
+                        <li>
+                           <asp:Image ID="Image7" runat="server" ImageUrl="~/Obrazy/miasta.png" Height="30px" Width="53px" />
+                       </li>
+                        <li>
+                            <asp:HyperLink runat="server" NavigateUrl="~/Strony/Miejscowosci.aspx">Miejscowości</asp:HyperLink></li>
+                         <li>
+                           <asp:Image ID="Image8" runat="server" ImageUrl="~/Obrazy/przebieg.png" Height="30px" Width="53px" />
+                       </li>
+                        <li>
+                            <asp:HyperLink runat="server" NavigateUrl="~/Strony/Przebieg.aspx">Przebieg</asp:HyperLink></li>
+                        </ul></div>
+                <div id="content">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

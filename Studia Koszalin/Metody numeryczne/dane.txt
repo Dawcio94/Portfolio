@@ -1,0 +1,10 @@
+0.4 5
+
+
+Podany x by³ równy: 0.4
+Podana ilosc elementow by³a równa: 5
+Wynik z gotowej funkcji to: 0.921061
+Wynik iteracyjnie to: 0.921061
+Wynik rekurencyjnie to: 0.921061
+Wynik schematem Hornera to: 0.921061
+1

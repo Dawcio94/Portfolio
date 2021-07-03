@@ -1,0 +1,10 @@
+Program przedstawia jak w tablicy,która sk³ada siê z 313 elementów przechowaæ 10000 liczb z zkresu od 1 do 9999.Program ma równie¿ mo¿liwoœæ zapisania tablicy do piku i odczytania jej z pliku.Plik ten jest plikiem tekstowym,do którego wpisujemy liczby wierszami (czyli ka¿da wartoœæ w osobnej linii).Ca³a zabawa polega na tym,¿e gdy podajemy jak¹œ liczbê np.4 to jej postaæ binarna jest nastêpuj¹ca 000000000000000000000000000000100,przy za³o¿eniu ¿e przechowujemy liczby na 32 bitach.Wszystkie elementy tablicy zerujemy wiêc maj¹ one postaæ 00000000000000000000000000000000.Teraz przy podaniu liczby 4 wybieramy odpowiedni¹ komórkê tablicy,tworzymy"maskê"i u¿ywamy odpowiedniego opertora bitowego w tym przypadku"or==|".Operator ustawi nam czwarty bit pierwszego elementy tablicy.Aby sprawdziæ czy dana liczba znajduje siê w tablicy,trzeba u¿yæ operatora"and==&"i sprawdziæ czy czwarty bit jest jedynk¹.
+Tworzenie maski:
+1.Musimy stworzyc liczbe w takiej postaci binarnej 10000000000000000000000000000000.Robimy to w nastepujacy sposob~0(negacja zero),powoduje zanegowanie wszystkich zer w reprezentacji binarnej liczby zero.Czyli jest liczba zero ma postaæ 00000000000000000000000000000000 to po tej operacji otrzymamy 11111111111111111111111111111111.Teraz jesli przesuniemy w lewo 31 bitów tzn.wszystkie jedynki od prawej strony przesuwamy w lewo o 31 pozycji.Do tego celu uzyjemy operatora bitowego<.Czyli jesli mamy zmienn¹ mask i najpierw przypiszemy jej wartoœæ zero mask=0 potem mask=~0 lub mask~=0 i wykonamy operacje przesuniêcia mask=mask<31 lub mask<=31 to otrzymamy maske w postaci 10000000000000000000000000000000
+2.Pierwsza jedynka w naszej masce mozemy dowolnie manipulowac tzn.przesuwac j¹ na dowoln¹ pozycjê.W ten sposób tworzymy nasz¹ maskê która ustawi nam odpowiedni bit w tablicy.
+3.Jeœli mamy liczby 4 to ustawiamy czwarty bit.mask>>=3(wartosc-1) i mamy maske 00010000000000000000000000000000
+4.Bierzemy pierwszy element tablicy i u¿ywaj¹c operatora or ustawiamy 4 bit w tablicy:
+tab[0]:00000000000000000000000000000000
+mask:00010000000000000000000000000000
+tab[0]|mask lub tab[0]or mask
+tab[0]: 00010000000000000000000000000000

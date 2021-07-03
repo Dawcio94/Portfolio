@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AC76AA0E-FBC7-42B0-90F1-52DB32282E65}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Baza_PKS</RootNamespace>
+    <AssemblyName>Baza_PKS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Autokar.cs">
+      <DependentUpon>Baza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Baza.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Baza.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Baza.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Baza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Baza.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Baza.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="frmautokary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmautokary.Designer.cs">
+      <DependentUpon>frmautokary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmautokaryedycja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmautokaryedycja.Designer.cs">
+      <DependentUpon>frmautokaryedycja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmdyżurny.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmdyżurny.Designer.cs">
+      <DependentUpon>frmdyżurny.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmkierowcy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmkierowcy.Designer.cs">
+      <DependentUpon>frmkierowcy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmkierowcyedycja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmkierowcyedycja.Designer.cs">
+      <DependentUpon>frmkierowcyedycja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmkursy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmkursy.Designer.cs">
+      <DependentUpon>frmkursy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmkursyedycja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmkursyedycja.Designer.cs">
+      <DependentUpon>frmkursyedycja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmlog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmlog.Designer.cs">
+      <DependentUpon>frmlog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmmiejscowosci.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmmiejscowosci.Designer.cs">
+      <DependentUpon>frmmiejscowosci.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmmiejscowosciedycja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmmiejscowosciedycja.Designer.cs">
+      <DependentUpon>frmmiejscowosciedycja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPasazer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPasazer.Designer.cs">
+      <DependentUpon>frmPasazer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmprzebieg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmprzebieg.Designer.cs">
+      <DependentUpon>frmprzebieg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmprzebiegedycja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmprzebiegedycja.Designer.cs">
+      <DependentUpon>frmprzebiegedycja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmtrasy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmtrasy.Designer.cs">
+      <DependentUpon>frmtrasy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmtrasyedycja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmtrasyedycja.Designer.cs">
+      <DependentUpon>frmtrasyedycja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kierowca.cs">
+      <DependentUpon>Baza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kurs.cs">
+      <DependentUpon>Baza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Miejscowości.cs">
+      <DependentUpon>Baza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partial.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Przebieg.cs">
+      <DependentUpon>Baza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Baza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Trasa.cs">
+      <DependentUpon>Baza.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmautokary.resx">
+      <DependentUpon>frmautokary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmautokaryedycja.resx">
+      <DependentUpon>frmautokaryedycja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmdyżurny.resx">
+      <DependentUpon>frmdyżurny.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmkierowcy.resx">
+      <DependentUpon>frmkierowcy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmkierowcyedycja.resx">
+      <DependentUpon>frmkierowcyedycja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmkursy.resx">
+      <DependentUpon>frmkursy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmkursyedycja.resx">
+      <DependentUpon>frmkursyedycja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmlog.resx">
+      <DependentUpon>frmlog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmmiejscowosci.resx">
+      <DependentUpon>frmmiejscowosci.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmmiejscowosciedycja.resx">
+      <DependentUpon>frmmiejscowosciedycja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPasazer.resx">
+      <DependentUpon>frmPasazer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmprzebieg.resx">
+      <DependentUpon>frmprzebieg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmprzebiegedycja.resx">
+      <DependentUpon>frmprzebiegedycja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmtrasy.resx">
+      <DependentUpon>frmtrasy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmtrasyedycja.resx">
+      <DependentUpon>frmtrasyedycja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="Baza.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Baza.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Baza.edmx.diagram">
+      <DependentUpon>Baza.edmx</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClassDiagram1.cd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClassDiagram2.cd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Autokar.datasource" />
+    <None Include="Properties\DataSources\Kierowca.datasource" />
+    <None Include="Properties\DataSources\Kurs.datasource" />
+    <None Include="Properties\DataSources\Miejscowości.datasource" />
+    <None Include="Properties\DataSources\Przebieg.datasource" />
+    <None Include="Properties\DataSources\Trasa.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Baza.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Baza.edmx</DependentUpon>
+      <LastGenOutput>Baza.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Baza.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Baza.edmx</DependentUpon>
+      <LastGenOutput>Baza.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

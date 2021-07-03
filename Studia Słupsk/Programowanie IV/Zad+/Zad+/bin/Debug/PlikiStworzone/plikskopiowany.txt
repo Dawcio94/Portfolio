@@ -1,0 +1,2 @@
+Druga metoda jest tak naprawdê znacznie czêœciej stosowana przez pocz¹tkuj¹cych programistów. Zmienna zostaje utworzona tylko na czas dzia³ania pêtli i wartoœæ zmiennej znana jest tylko wewn¹trz pêtli. Natomiast ju¿ po zakoñczeniu pêtli, wartoœci uzyskaæ nie mo¿na, bowiem po zakoñczeniu pêtli, taka zmienna ju¿ nie istnieje.
+Mimo tak oczywistych wad, metoda ma jedn¹ zaletê - stosuj¹c t¹ metodê, tu¿ po zakoñczeniu pêtli wartoœæ zmiennej i sama zmienna nie s¹ znane - dziêki temu zapobiegamy zaœmiecaniu programu zmiennymi, które s¹ u¿ywane tylko w pêtlach.

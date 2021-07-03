@@ -1,0 +1,25 @@
+﻿<Window x:Class="Shapes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Shapes"
+        mc:Ignorable="d"
+        Title="Kształty" WindowStartupLocation="CenterScreen" FontFamily="Times New Roman" FontSize="36">
+    <Grid Margin="0,0,2,5">
+
+        <Button x:Name="btAddCircle" Content="Dodaj okrąg" HorizontalAlignment="Left" Width="150" Height="70" FontFamily="Times New Roman" FontSize="20" VerticalAlignment="Bottom" Click="BtAddCircle_Click"/>
+        <Button x:Name="btAddTriangle" Content="Dodaj trójkąt" HorizontalAlignment="Left" Margin="155,0,0,0" VerticalAlignment="Bottom" Width="150" Height="70" FontFamily="Times New Roman" FontSize="20" Click="BtAddTriangle_Click"/>
+        <Button x:Name="btAddQuadrangle" Content="Dodaj czworokąt" HorizontalAlignment="Left" Margin="310,0,0,0" VerticalAlignment="Bottom" Width="150" Height="70" FontFamily="Times New Roman" FontSize="20" Click="BtAddQuadrangle_Click"/>
+        <Button x:Name="btAddOtherShape" Content="Dodaj sześciokąt" HorizontalAlignment="Left" Margin="465,0,0,0" VerticalAlignment="Bottom" Width="150" Height="70" FontFamily="Times New Roman" FontSize="20" Click="BtAddOtherShape_Click"/>
+        <ComboBox x:Name="cbShapes" Margin="620,0,0,46" FontFamily="Times New Roman" FontSize="16" VerticalAlignment="Bottom" RenderTransformOrigin="0.32,-1.468" HorizontalAlignment="Left" SelectionChanged="CbShapes_SelectionChanged" Width="170"/>
+        <Label x:Name="lblarea" Content="Pole powierzchni:" HorizontalAlignment="Right" Margin="0,0,89,30" VerticalAlignment="Bottom" FontFamily="Times New Roman" FontSize="24"/>
+        <Label x:Name="lblrounding" Content="Obwód:" HorizontalAlignment="Right" Margin="0,0,89,-2" VerticalAlignment="Bottom" RenderTransformOrigin="2.198,0.524" FontFamily="Times New Roman" FontSize="24"/>
+        <Label x:Name="lblshowrounding" HorizontalAlignment="Right" Margin="855,429,0,0" VerticalAlignment="Bottom" FontFamily="Times New Roman" FontSize="24" RenderTransformOrigin="0.492,-1.423" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="lblshowarea"  HorizontalAlignment="Right" Margin="0,0,-3,32" VerticalAlignment="Bottom"  FontFamily="Times New Roman" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Canvas x:Name="cswork" Background="Gray" ClipToBounds="True" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" Margin="0,0,-1162,76" HorizontalAlignment="Left" MouseDown="Cswork_MouseDown" />
+        <Label x:Name="lblAddNewPoint"  Margin="620,0,-120,0"  HorizontalAlignment="Left" VerticalAlignment="Bottom" RenderTransformOrigin="0.32,-1.468" FontFamily="Times New Roman" FontSize="18"/>
+        <Button x:Name="btDelete" Content="Usuń" Margin="796,0,-188,-2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150" Height="70" FontFamily="Times New Roman" FontSize="20" Click="BtDelete_Click"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,16 @@
+//tabelarycznie
+
+alter table Engagement
+add foreign key  "FK_Agent_Engagement"(Agent_Id) references Agent(Agent_Id)
+on update restrict
+on delete restrict;
+
+alter table Engagement
+add foreign key  "FK_Customer_Engagement"(Cust_Id) references Customer(Cust_Id)
+on update restrict
+on delete restrict;
+
+alter table Engagement
+add foreign key  "FK_Entertainer_Engagement"(Ent_Id) references Entertainer(Ent_Id)
+on update restrict
+on delete restrict;

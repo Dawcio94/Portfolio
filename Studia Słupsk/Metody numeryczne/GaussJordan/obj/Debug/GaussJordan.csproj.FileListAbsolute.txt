@@ -1,0 +1,6 @@
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\Uklady rownan-macierze\GaussJordan\bin\Debug\GaussJordan.exe.config
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\Uklady rownan-macierze\GaussJordan\bin\Debug\GaussJordan.exe
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\Uklady rownan-macierze\GaussJordan\bin\Debug\GaussJordan.pdb
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\Uklady rownan-macierze\GaussJordan\obj\Debug\GaussJordan.csprojAssemblyReference.cache
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\Uklady rownan-macierze\GaussJordan\obj\Debug\GaussJordan.exe
+D:\Dawid\Studia Słupsk\II rok\I semestr\Metody numeryczne\Uklady rownan-macierze\GaussJordan\obj\Debug\GaussJordan.pdb

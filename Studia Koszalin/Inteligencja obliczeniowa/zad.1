@@ -1,0 +1,16 @@
+wykres=zeros(4,21);
+for i=1:21
+    wykres(1,i)=-1+(21-i)*0.1;
+end
+for i=1:21
+    x=wykres(1,i);
+    wykres(2,i)=x^2;
+    wykres(3,i)=x^3;
+    wykres(4,i)=x^4;
+end
+subplot(2,1,1);
+plot(wykres(1,:),wykres(2,:),'r');
+mtlb_hold on;
+plot(wykres(1,:),wykres(3,:),'b');
+subplot(2,1,2);
+plot(wykres(1,:),wykres(4,:),'g');

@@ -1,0 +1,7 @@
+Ocena=0.3*I+0.25*II+0.3*III+0.15*IV
+Teamt pracy: Baza kursów PKS
+29.03->I etap
+26.04->II etap
+24.05->III etap
+07.06->IV etap
+PowerDesigner

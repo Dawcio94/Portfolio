@@ -1,0 +1,14 @@
+C:\Users\st609\Desktop\Zad7\Zad7\bin\Debug\Zad7.exe.config
+C:\Users\st609\Desktop\Zad7\Zad7\bin\Debug\Zad7.exe
+C:\Users\st609\Desktop\Zad7\Zad7\bin\Debug\Zad7.pdb
+C:\Users\st609\Desktop\Zad7\Zad7\obj\Debug\Zad7.csprojResolveAssemblyReference.cache
+C:\Users\st609\Desktop\Zad7\Zad7\obj\Debug\Zad7.csproj.CoreCompileInputs.cache
+C:\Users\st609\Desktop\Zad7\Zad7\obj\Debug\Zad7.exe
+C:\Users\st609\Desktop\Zad7\Zad7\obj\Debug\Zad7.pdb
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad7\Zad7\bin\Debug\Zad7.exe.config
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad7\Zad7\bin\Debug\Zad7.exe
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad7\Zad7\bin\Debug\Zad7.pdb
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad7\Zad7\obj\Debug\Zad7.csproj.CoreCompileInputs.cache
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad7\Zad7\obj\Debug\Zad7.exe
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad7\Zad7\obj\Debug\Zad7.pdb
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad7\Zad7\obj\Debug\Zad7.csprojAssemblyReference.cache

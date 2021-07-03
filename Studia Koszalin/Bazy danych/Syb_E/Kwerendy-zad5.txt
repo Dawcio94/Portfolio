@@ -1,0 +1,92 @@
+1.SELECT a.Agent_Id,a.First_Name,a.Last_Name,e.Contract_Price
+from Agent AS a
+INNER JOIN Engagement AS e
+ON a.Agent_Id=e.Agent_Id
+where e.Contract_Price IN (2000,4000,8000)
+
+2.SELECT e.Stage_Name,m.First_Name,m.Last_Name
+from Entertainer AS e
+INNER JOIN Entertainer_Member AS em
+on em.Ent_Id=e.Ent_Id
+INNER JOIN Member AS m
+ON em.Mem_Id=m.Mem_Id
+where m.Last_Name LIKE '%ow%'
+
+3.SELECT c.Cust_Id,c.First_Name,c.Last_Name,c.Phone,e.Contract_Price
+from Customer AS c
+INNER JOIN Engagement AS e
+ON c.Cust_Id=e.Cust_Id
+where c.Phone IS NULL and e.Contract_Price >=2000
+
+4.SELECT *,Salary+Commission_Rate AS SUMY
+from Agent
+
+5.SELECT a.*,a.Salary+Commission_Rate AS SUMY
+from Agent AS a
+INNER JOIN Engagement AS e
+ON a.Agent_Id=e.Agent_Id
+WHERE year(e.Start_Date)>'2002'
+
+6.SELECT c.Cust_Id,c.First_Name,c.Last_Name,e.Start_Date
+from Customer AS c
+INNER JOIN Engagement AS e
+ON c.Cust_Id=e.Cust_Id
+WHERE e.Start_Date>'2002-05-04'
+ORDER BY e.Start_Date
+
+7.SELECT m.First_Name,m.Last_Name
+from Entertainer AS e
+INNER JOIN Entertainer_Member AS em
+on em.Ent_Id=e.Ent_Id
+INNER JOIN Member AS m
+ON em.Mem_Id=m.Mem_Id
+where e.Stage_Name LIKE 'Czerwone kaczki' and m.Gender LIKE 'K'
+
+8.SELECT COUNT(*) AS "Ile klientow"
+from Customer
+
+9.SELECT City,COUNT(*) AS "Ile klientow"
+from Customer
+GROUP BY City
+
+10.SELECT AVG(Salary) AS Srednia,Max(Salary) AS Maks,MIN(Salary) AS Mini
+FROM Agent
+
+11.SELECT a.Agent_Id,AVG(e.Contract_Price)AS "Srednia"
+FROM Agent AS a
+INNER JOIN Engagement AS e
+ON a.Agent_Id=e.Agent_Id
+GROUP BY a.Agent_Id 
+ORDER BY a.Agent_Id 
+
+12.SELECT e.Stage_Name,count(m.Mem_Id) AS "Ile czlonkow"
+from Entertainer AS e
+INNER JOIN Entertainer_Member AS em
+on em.Ent_Id=e.Ent_Id
+INNER JOIN Member AS m
+ON em.Mem_Id=m.Mem_Id
+WHERE e.Stage_Name LIKE '%o%'
+GROUP BY e.Stage_Name
+HAVING count(m.Mem_Id)<3
+ORDER BY e.Stage_Name DESC
+
+kto gra zespole co maryla :D 
+
+zaliczenie
+
+SELECT e.Stage_Name
+from Entertainer AS e
+INNER JOIN Entertainer_Member AS em
+on em.Ent_Id=e.Ent_Id
+INNER JOIN Member AS m
+ON em.Mem_Id=m.Mem_Id
+where m.First_Name ||' '|| m.Last_Name LIKE 'Anna'||' '||'Klisza'
+
+SELECT m1.First_Name
+from Member AS m, Member as m1
+where m.Last_Name LIKE 'Kalisza' and m1.First_Name = m.First_Name
+ 
+
+
+
+

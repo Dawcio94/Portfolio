@@ -1,0 +1,14 @@
+C:\Users\dawci\source\repos\Zad3\Zad3\bin\Debug\Zad3.exe.config
+C:\Users\dawci\source\repos\Zad3\Zad3\bin\Debug\Zad3.exe
+C:\Users\dawci\source\repos\Zad3\Zad3\bin\Debug\Zad3.pdb
+C:\Users\dawci\source\repos\Zad3\Zad3\obj\Debug\Zad3.csprojAssemblyReference.cache
+C:\Users\dawci\source\repos\Zad3\Zad3\obj\Debug\Zad3.csproj.CoreCompileInputs.cache
+C:\Users\dawci\source\repos\Zad3\Zad3\obj\Debug\Zad3.exe
+C:\Users\dawci\source\repos\Zad3\Zad3\obj\Debug\Zad3.pdb
+D:\Dawid\Studia Słupsk\I rok\I semestr\Programowanie\Zad3\Zad3\bin\Debug\Zad3.exe.config
+D:\Dawid\Studia Słupsk\I rok\I semestr\Programowanie\Zad3\Zad3\bin\Debug\Zad3.exe
+D:\Dawid\Studia Słupsk\I rok\I semestr\Programowanie\Zad3\Zad3\bin\Debug\Zad3.pdb
+D:\Dawid\Studia Słupsk\I rok\I semestr\Programowanie\Zad3\Zad3\obj\Debug\Zad3.csprojAssemblyReference.cache
+D:\Dawid\Studia Słupsk\I rok\I semestr\Programowanie\Zad3\Zad3\obj\Debug\Zad3.csproj.CoreCompileInputs.cache
+D:\Dawid\Studia Słupsk\I rok\I semestr\Programowanie\Zad3\Zad3\obj\Debug\Zad3.exe
+D:\Dawid\Studia Słupsk\I rok\I semestr\Programowanie\Zad3\Zad3\obj\Debug\Zad3.pdb

@@ -1,0 +1,7 @@
+C:\Users\st505\Desktop\Cwiczenia 1\Zad2\Zad2\bin\Debug\Zad2.exe.config
+C:\Users\st505\Desktop\Cwiczenia 1\Zad2\Zad2\bin\Debug\Zad2.exe
+C:\Users\st505\Desktop\Cwiczenia 1\Zad2\Zad2\bin\Debug\Zad2.pdb
+C:\Users\st505\Desktop\Cwiczenia 1\Zad2\Zad2\obj\Debug\Zad2.csprojAssemblyReference.cache
+C:\Users\st505\Desktop\Cwiczenia 1\Zad2\Zad2\obj\Debug\Zad2.csproj.CoreCompileInputs.cache
+C:\Users\st505\Desktop\Cwiczenia 1\Zad2\Zad2\obj\Debug\Zad2.exe
+C:\Users\st505\Desktop\Cwiczenia 1\Zad2\Zad2\obj\Debug\Zad2.pdb

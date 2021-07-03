@@ -1,0 +1,22 @@
+﻿@model IEnumerable<ClotheShop_MVC.Models.Clothes>
+
+
+@{
+    ViewData["Title"] = "Koszule damskie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2>Koszule damskie</h2></center>
+
+<table class="table">
+    @foreach (ClotheShop_MVC.Models.Clothes clothe in Model)
+    {
+        <tr style="text-align:center;display:inline-block;font-size:large">
+            <td>
+                <img src="@Url.Content("~/Images/"+clothe.Image)" />
+                <h3>@Html.ActionLink(clothe.Name, "Details", "Details", new { id = clothe.ProductID }, null)</h3>
+                <h3>@Html.DisplayFor(Model => clothe.Price) PLN</h3>
+            </td>
+        </tr>
+    }
+</table>

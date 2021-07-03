@@ -1,0 +1,77 @@
+1.SELECT Agent_Id AS ID,First_Name,Last_Name
+FROM Agent
+where Last_Name Like 'Kowalski' 
+UNION 
+SELECT Cust_Id AS ID, First_Name, Last_Name
+from Customer
+where Last_Name Like 'Leja'
+2.Select *
+from Agent
+Where Salary>(
+Select AVG(Salary)
+from Agent)
+3.Select a.*
+from Agent AS a
+INNER JOIN Engagement AS e
+ON a.Agent_Id=e.Agent_Id
+Where e.Start_Date>'2002-08-01' and a.Salary<(
+Select AVG(Salary)+100
+from Agent) 
+4.Select *
+from Agent
+where Salary IN
+(Select Salary
+from Agent 
+where Salary<2000)
+5.Select *
+from Customer
+where Phone IN
+(Select Phone
+from Agent 
+where Phone IS NOT NULL)
+6.Select a.*
+from Agent AS a
+where Salary IN
+(Select a.Salary
+from Agent 
+where Salary>a.Salary and City LIKE 'Koszalin')
+7.CREATE VIEW Widok1 AS
+SELECT First_Name,Last_Name,City
+from Customer
+Where Phone IS NOT NULL 
+8.CREATE VIEW Widok2 AS
+SELECT c.Cust_Id,c.First_Name AS "Imie klienta",c.City,a.Last_Name
+from Customer AS c 
+INNER JOIN Engagement AS e
+ON c.Cust_Id=c.Cust_Id
+INNER JOIN Agent AS a
+ON a.Agent_Id=e.Agent_Id
+9.CREATE VIEW Widok3 AS
+Select First_Name,Last_Name,
+Case City
+    When 'KOszalin' THEN 'KLIENT ODZIALU MACIERZYSTEGO'
+    ELSE 'KLIENT Z PRZEDSTAWICIELSTWA'
+END AS "Skad"
+from Customer;
+10.create table Test
+(
+Test_Id 	varchar(10) 	primary key,
+Rodzaj 	    varchar(15) 	not null,
+Czas 	    numeric(15) 	not null,
+);
+11.INSERT INTO Test (Test_Id, Rodzaj, Czas)
+SELECT Agent_Id, City, Salary
+FROM Agent
+12.UPDATE  Test
+SET Rodzaj=(
+Select City
+FROM Customer
+WHERE Test_Id=Cust_Id
+)
+13.
+DELETE FROM Test
+WHERE EXISTS (
+SELECT Salary
+from Agent
+WHERE Test_Id=Agent_Id
+)

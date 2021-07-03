@@ -1,0 +1,7 @@
+C:\Users\dawci\Desktop\Huffmann Algorithm\Huffmann Algorithm\bin\Debug\Huffmann Algorithm.exe.config
+C:\Users\dawci\Desktop\Huffmann Algorithm\Huffmann Algorithm\bin\Debug\Huffmann Algorithm.exe
+C:\Users\dawci\Desktop\Huffmann Algorithm\Huffmann Algorithm\bin\Debug\Huffmann Algorithm.pdb
+C:\Users\dawci\Desktop\Huffmann Algorithm\Huffmann Algorithm\obj\Debug\Huffmann Algorithm.csprojAssemblyReference.cache
+C:\Users\dawci\Desktop\Huffmann Algorithm\Huffmann Algorithm\obj\Debug\Huffmann Algorithm.csproj.CoreCompileInputs.cache
+C:\Users\dawci\Desktop\Huffmann Algorithm\Huffmann Algorithm\obj\Debug\Huffmann Algorithm.exe
+C:\Users\dawci\Desktop\Huffmann Algorithm\Huffmann Algorithm\obj\Debug\Huffmann Algorithm.pdb

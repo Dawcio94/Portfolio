@@ -1,0 +1,70 @@
+create table Agent
+(
+Agent_Id 	varchar(10) 	primary key, //kolumnowe
+First_Name 	varchar(15) 	not null,
+Last_Name 	varchar(15) 	not null,
+Address 	varchar(30) 	not null,
+City 		varchar(15) 	not null,
+State 		varchar(2) 	not null,
+Zip 		Numeric(7) 	not null,
+Salary 		Numeric(6) 	not null,
+Commission_Rate Numeric(5) 	    null,
+);
+
+create table Customer
+(
+Cust_Id 	varchar(10) 	primary key, //kolumnowe
+First_Name 	varchar(15) 	not null,
+Last_Name 	varchar(15) 	not null,
+Address 	varchar(30) 	not null,
+City 		varchar(15) 	not null,
+State 		varchar(2) 		not null,
+Zip 		Numeric(7) 		not null,
+Salary 		Numeric(6) 		not null,
+Phone		Numeric(6) 	    null,
+);
+
+create table Entertainer
+(
+Ent_Id 		varchar(10) 	not null,
+Stage_Name 	varchar(20) 	not null,
+Music_Style varchar(15) 	not null,
+Address 	varchar(30) 	not null,
+City 		varchar(15) 	not null,
+Zip 		Numeric(7) 	not null,
+Date_Entered 	Date	 	not null,
+constraint PK_Entertainer primary key(Ent_Id) //nazwa tablerycznie
+);
+
+create table Engagement
+(
+Eng_Id 		varchar(10) 	not null,
+Start_Date 	date	 	not null,
+End_Date 	date	 	not null,
+Contract_Price 	Numeric(7)	not null,
+Cust_Id		varchar(10)	not null,
+Agent_Id	varchar(10)	not null,
+Ent_Id		varchar(10)	not null,
+constraint PK_Engagement primary key(Eng_Id) //nazwa tablerycznie
+);
+
+create table Member //graficznie
+(
+Mem_Id 		varchar(10) 	not null,
+First_Name	varchar(10)	not null,
+Last_Name	varchar(10)	not null,
+Gender		varchar(10)	not null,
+primary key(Mem_Id)
+);
+//graficznie,kolumnowe FK
+create table Entertainer_Member1 
+(
+EM_Id 		varchar(10) 	not null, 
+Ent_Id 		varchar(10) 	not null, foreign key references Entertainer(Ent_Id),
+Mem_Id 		varchar(10) 	not null, foreign key references Member(Mem_Id),
+primary key(EM_Id,Ent_Id,Mem_Id)
+);
+
+
+
+

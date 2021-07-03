@@ -1,0 +1,7 @@
+C:\Users\st505\Desktop\Zad+\Zad+\bin\Debug\Zad+.exe.config
+C:\Users\st505\Desktop\Zad+\Zad+\bin\Debug\Zad+.exe
+C:\Users\st505\Desktop\Zad+\Zad+\bin\Debug\Zad+.pdb
+C:\Users\st505\Desktop\Zad+\Zad+\obj\Debug\Zad+.csprojAssemblyReference.cache
+C:\Users\st505\Desktop\Zad+\Zad+\obj\Debug\Zad+.csproj.CoreCompileInputs.cache
+C:\Users\st505\Desktop\Zad+\Zad+\obj\Debug\Zad+.exe
+C:\Users\st505\Desktop\Zad+\Zad+\obj\Debug\Zad+.pdb

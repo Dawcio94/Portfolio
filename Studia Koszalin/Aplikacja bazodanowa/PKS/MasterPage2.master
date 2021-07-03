@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage2.master.cs" Inherits="MasterPage2" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Wyszukiwarka połączeń PKS</title>
+    <link rel="stylesheet" href="Styles/StyleSheet.css" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div id="wrapper">
+                <div id="banner">
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Obrazy/banner2.jpg" Width="100%" />
+                </div>
+                <div>
+                </div>
+                <div id="navigation1">
+                    <ul id="nav1">
+                        <li style="float: right">
+                            <asp:HyperLink runat="server" NavigateUrl="~/Strony/Login.aspx">Zaloguj</asp:HyperLink></li>
+                        <li style="float: right; margin-left: 0px;">
+                            &nbsp;
+                           <asp:Image ID="Image9" runat="server" ImageUrl="~/Obrazy/ico_login.gif" Height="30px" Width="53px" />
+                       </li>
+                        
+                    </ul>
+                </div>
+                <div id="navigation">
+                    
+                    <ul id="nav">
+                       <li>
+                           <asp:Image ID="Image2" runat="server" ImageUrl="~/Obrazy/logo.png" />
+                       </li>
+                        <li>
+                            <asp:HyperLink runat="server" Font-Size="XX-Large" NavigateUrl="~/Strony/Pasazer.aspx" Width="930px">Wyszukiwarka połączeń PKS</asp:HyperLink></li>
+                        </ul></div>
+                <div id="content">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+

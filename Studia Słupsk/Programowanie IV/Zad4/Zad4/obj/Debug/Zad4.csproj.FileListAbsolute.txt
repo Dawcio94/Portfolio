@@ -1,0 +1,7 @@
+C:\Users\st505\source\repos\Zad4\Zad4\bin\Debug\Zad4.exe.config
+C:\Users\st505\source\repos\Zad4\Zad4\bin\Debug\Zad4.exe
+C:\Users\st505\source\repos\Zad4\Zad4\bin\Debug\Zad4.pdb
+C:\Users\st505\source\repos\Zad4\Zad4\obj\Debug\Zad4.csprojAssemblyReference.cache
+C:\Users\st505\source\repos\Zad4\Zad4\obj\Debug\Zad4.csproj.CoreCompileInputs.cache
+C:\Users\st505\source\repos\Zad4\Zad4\obj\Debug\Zad4.exe
+C:\Users\st505\source\repos\Zad4\Zad4\obj\Debug\Zad4.pdb

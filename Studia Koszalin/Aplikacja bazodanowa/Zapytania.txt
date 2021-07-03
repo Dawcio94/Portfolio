@@ -1,0 +1,55 @@
+1.Select m.Nazwa_miejscowosci
+From Trasa AS t
+Inner join Kurs AS k
+ON t.Id_trasy=k.Id_trasy
+Inner join Przebieg AS p
+on p.Id_trasy=t.Id_trasy
+Inner join Miejscowości AS m
+on m.Id_miejscowosci=p.Id_miejscowosci
+Where( t.Id_miejscowosci_poczatek!=p.Id_miejscowosci OR t.Id_miejscowosci_koniec!=p.Id_miejscowosci ) and k.Id_kursu=2
+Order by p.Kolejnosc
+
+2.Select k.Imie_Nazwisko
+From Kierowca AS k
+Inner Join kurs AS ku
+ON k.Id_kursu=ku.Id_kursu
+WHERE ku.Data_kursu=CONVERT(date,SYSDATETIME()) and ku.Godzina_rozpoczecia<CONVERT(time,SYSDATETIME())
+
+3.Select SUM(Ilość_pasażerów) AS Tygodniowy
+FROM Kurs
+WHERE Data_kursu<CONVERT(date,SYSDATETIME())
+
+4.Select k.Id_kursu,m.Nazwa_miejscowosci,k.Godzina_rozpoczecia,p.Roznica_czasu
+From Kurs AS k
+INNER JOIN Trasa as t
+ON k.Id_trasy=t.Id_trasy
+INNER JOIN Przebieg AS p
+ON p.Id_trasy=t.Id_trasy
+INNER JOIN Miejscowości AS m
+ON m.Id_miejscowosci=p.Id_miejscowosci
+WHERE p.Id_miejscowosci=5 OR p.Id_miejscowosci=1
+Order by p.Roznica_czasu
+
+5.Select (SUM(Ilość_pasażerów)/COUNT(Id_kursu)) AS Tygodniowy
+FROM Kurs AS k
+INNER JOIN Trasa AS t
+on k.Id_trasy=t.Id_trasy
+WHERE Data_kursu<=CONVERT(date,SYSDATETIME()) and k.Id_kursu=2
+
+6.Select m.Nazwa_miejscowosci,k.Godzina_rozpoczecia,p.Roznica_czasu
+From Trasa AS t
+Inner join Kurs AS k
+ON t.Id_trasy=k.Id_trasy
+Inner join Przebieg AS p
+on p.Id_trasy=t.Id_trasy
+Inner join Miejscowości AS m
+on m.Id_miejscowosci=p.Id_miejscowosci
+Where( t.Id_miejscowosci_poczatek!=p.Id_miejscowosci OR t.Id_miejscowosci_koniec!=p.Id_miejscowosci ) and k.Id_kursu=2
+Order by p.Kolejnosc
+
+7.Select k.Imie_Nazwisko
+FROM Kierowca AS k
+INNER JOIN Kurs AS ku
+ON ku.Id_kursu=k.Id_kursu
+INNER JOIN Autokar AS a
+on a.Id_kursu=k.Id_kursu

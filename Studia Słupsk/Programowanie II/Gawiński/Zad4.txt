@@ -1,0 +1,9 @@
+1.Wybor srodkowej wartosci 22(Nasza wartosc kluczowa)
+2.Nastepny krok to sprawdzenie czy nasza szukana wartosc jest wieksza czy mniejsza od wybranych 2
+4.22 jest mniejsze od 87 takze dalsza czesc przeszukiwania bedzie na lewej czesci calego ciagu
+5.Wybieramy teraz wartosc kluczowa znajdujaca sie w srodku ciagu 100,87,65,43.Jest to wartoœæ 65.
+6.Analogicznie postepujemy tak jak w pkt 2 lecz juz z liczba szukana oraz nowa wartoscia kluczowa.
+7.Sprawdzamy czy 65 jest mniejsze badz wieksze od 87.Jest mniejsze dlatego po raz kolejny wybieramy lewa czesc ciagu.
+8.Nasz wyjsciowy ciag do analizy to juz tylko 100 oraz 87.
+9.Wybieramy nowa wartosc kluczowa podobnie jak w pkt 1 czy 5.Zaokraglajac do gory to nasz "klucz" ma teraz wartosci 87.
+10.Porownujemy wartosc klucza oraz szukanej.Sa rowne takze szukanie binarne skonczylo sie a odpowiedzia jest pozycja nr 23 w wyjsciowym ciagu podanym na samym poczatku. 

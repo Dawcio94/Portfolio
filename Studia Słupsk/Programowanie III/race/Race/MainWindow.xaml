@@ -1,0 +1,29 @@
+﻿<Window x:Class="Race.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Race"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1200"
+        KeyDown="Window_KeyDown">
+    <Grid>
+        <Canvas>
+            <Rectangle x:Name="FirstCarImage" Width="100" Height="50" Canvas.Top="100" Canvas.Left="100">
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="Fill" ImageSource="Resources/first_car.jpg" ></ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle x:Name="ThirdCarImage" Width="100" Height="50" Canvas.Top="300" Canvas.Left="100">
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="Fill" ImageSource="Resources/first_car.jpg" ></ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle x:Name="SecondCarImage" Width="100" Height="50" Canvas.Top="200" Canvas.Left="100">
+                <Rectangle.Fill>
+                    <ImageBrush Stretch="Fill" ImageSource="Resources/second_car.jpg" ></ImageBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Canvas>
+    </Grid>
+</Window>

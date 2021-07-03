@@ -1,0 +1,13 @@
+D:\Dawid\Studia\IV rok\ISD\Zad_1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\Dawid\Studia\IV rok\ISD\Zad_1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\Dawid\Studia\IV rok\ISD\Zad_1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\Dawid\Studia\IV rok\ISD\Zad_1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Dawid\Studia\IV rok\ISD\Zad_1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\Dawid\Studia\IV rok\ISD\Zad_1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+D:\Dawid\Studia Koszalin\IV rok\ISD\Zad_1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\Dawid\Studia Koszalin\IV rok\ISD\Zad_1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\Dawid\Studia Koszalin\IV rok\ISD\Zad_1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\Dawid\Studia Koszalin\IV rok\ISD\Zad_1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojAssemblyReference.cache
+D:\Dawid\Studia Koszalin\IV rok\ISD\Zad_1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CoreCompileInputs.cache
+D:\Dawid\Studia Koszalin\IV rok\ISD\Zad_1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Dawid\Studia Koszalin\IV rok\ISD\Zad_1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

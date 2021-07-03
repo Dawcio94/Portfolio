@@ -1,0 +1,7 @@
+C:\Users\st505\source\repos\Zad6\Zad6\bin\Debug\Zad6.exe.config
+C:\Users\st505\source\repos\Zad6\Zad6\bin\Debug\Zad6.exe
+C:\Users\st505\source\repos\Zad6\Zad6\bin\Debug\Zad6.pdb
+C:\Users\st505\source\repos\Zad6\Zad6\obj\Debug\Zad6.csprojAssemblyReference.cache
+C:\Users\st505\source\repos\Zad6\Zad6\obj\Debug\Zad6.csproj.CoreCompileInputs.cache
+C:\Users\st505\source\repos\Zad6\Zad6\obj\Debug\Zad6.exe
+C:\Users\st505\source\repos\Zad6\Zad6\obj\Debug\Zad6.pdb

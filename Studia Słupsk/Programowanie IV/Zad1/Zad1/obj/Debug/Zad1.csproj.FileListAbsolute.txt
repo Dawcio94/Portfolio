@@ -1,0 +1,7 @@
+C:\Users\st505\Desktop\Cwiczenia 1\Zad1\Zad1\bin\Debug\Zad1.exe.config
+C:\Users\st505\Desktop\Cwiczenia 1\Zad1\Zad1\bin\Debug\Zad1.exe
+C:\Users\st505\Desktop\Cwiczenia 1\Zad1\Zad1\bin\Debug\Zad1.pdb
+C:\Users\st505\Desktop\Cwiczenia 1\Zad1\Zad1\obj\Debug\Zad1.csprojAssemblyReference.cache
+C:\Users\st505\Desktop\Cwiczenia 1\Zad1\Zad1\obj\Debug\Zad1.csproj.CoreCompileInputs.cache
+C:\Users\st505\Desktop\Cwiczenia 1\Zad1\Zad1\obj\Debug\Zad1.exe
+C:\Users\st505\Desktop\Cwiczenia 1\Zad1\Zad1\obj\Debug\Zad1.pdb

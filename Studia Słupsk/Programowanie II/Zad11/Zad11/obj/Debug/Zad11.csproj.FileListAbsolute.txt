@@ -1,0 +1,14 @@
+C:\Users\st609\Desktop\Zad11\Zad11\bin\Debug\Zad11.exe.config
+C:\Users\st609\Desktop\Zad11\Zad11\bin\Debug\Zad11.exe
+C:\Users\st609\Desktop\Zad11\Zad11\bin\Debug\Zad11.pdb
+C:\Users\st609\Desktop\Zad11\Zad11\obj\Debug\Zad11.csprojResolveAssemblyReference.cache
+C:\Users\st609\Desktop\Zad11\Zad11\obj\Debug\Zad11.csproj.CoreCompileInputs.cache
+C:\Users\st609\Desktop\Zad11\Zad11\obj\Debug\Zad11.exe
+C:\Users\st609\Desktop\Zad11\Zad11\obj\Debug\Zad11.pdb
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad11\Zad11\bin\Debug\Zad11.exe.config
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad11\Zad11\bin\Debug\Zad11.exe
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad11\Zad11\bin\Debug\Zad11.pdb
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad11\Zad11\obj\Debug\Zad11.csprojAssemblyReference.cache
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad11\Zad11\obj\Debug\Zad11.csproj.CoreCompileInputs.cache
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad11\Zad11\obj\Debug\Zad11.exe
+D:\Dawid\Studia Słupsk\I rok\II semestr\Metody programowania\Zad11\Zad11\obj\Debug\Zad11.pdb

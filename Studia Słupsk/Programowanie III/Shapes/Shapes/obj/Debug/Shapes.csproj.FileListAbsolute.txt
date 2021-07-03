@@ -1,0 +1,30 @@
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\obj\Debug\Shapes.csprojAssemblyReference.cache
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\obj\Debug\App.g.cs
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\obj\Debug\Shapes_MarkupCompile.cache
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\bin\Debug\Shapes.exe.config
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\bin\Debug\Shapes.exe
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\bin\Debug\Shapes.pdb
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\obj\Debug\MainWindow.g.cs
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\obj\Debug\Shapes_MarkupCompile.lref
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\obj\Debug\MainWindow.baml
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\obj\Debug\Shapes.g.resources
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\obj\Debug\Shapes.Properties.Resources.resources
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\obj\Debug\Shapes.csproj.GenerateResource.cache
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\obj\Debug\Shapes.csproj.CoreCompileInputs.cache
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\obj\Debug\Shapes.exe
+C:\Users\dawci\Documents\GitHub\shapes\Shapes\obj\Debug\Shapes.pdb
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\bin\Debug\Shapes.exe.config
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\bin\Debug\Shapes.exe
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\bin\Debug\Shapes.pdb
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\obj\Debug\Shapes.csprojAssemblyReference.cache
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\obj\Debug\MainWindow.g.cs
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\obj\Debug\App.g.cs
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\obj\Debug\Shapes_MarkupCompile.cache
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\obj\Debug\Shapes_MarkupCompile.lref
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\obj\Debug\MainWindow.baml
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\obj\Debug\Shapes.g.resources
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\obj\Debug\Shapes.Properties.Resources.resources
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\obj\Debug\Shapes.csproj.GenerateResource.cache
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\obj\Debug\Shapes.csproj.CoreCompileInputs.cache
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\obj\Debug\Shapes.exe
+D:\Dawid\Studia Słupsk\I rok\II semestr\Programowanie\Shapes\Shapes\obj\Debug\Shapes.pdb

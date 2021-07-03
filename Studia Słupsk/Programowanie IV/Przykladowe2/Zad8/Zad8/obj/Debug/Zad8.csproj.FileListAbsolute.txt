@@ -1,0 +1,13 @@
+C:\Users\st505\Desktop\Zad8\Zad8\bin\Debug\Zad8.exe.config
+C:\Users\st505\Desktop\Zad8\Zad8\bin\Debug\Zad8.exe
+C:\Users\st505\Desktop\Zad8\Zad8\bin\Debug\Zad8.pdb
+C:\Users\st505\Desktop\Zad8\Zad8\obj\Debug\Zad8.csprojAssemblyReference.cache
+C:\Users\st505\Desktop\Zad8\Zad8\obj\Debug\Zad8.csproj.CoreCompileInputs.cache
+C:\Users\st505\Desktop\Zad8\Zad8\obj\Debug\Zad8.exe
+C:\Users\st505\Desktop\Zad8\Zad8\obj\Debug\Zad8.pdb
+D:\Dawid\Studia Słupsk\II rok\I semestr\Programowanie\Zad8\Zad8\bin\Debug\Zad8.exe.config
+D:\Dawid\Studia Słupsk\II rok\I semestr\Programowanie\Zad8\Zad8\bin\Debug\Zad8.exe
+D:\Dawid\Studia Słupsk\II rok\I semestr\Programowanie\Zad8\Zad8\bin\Debug\Zad8.pdb
+D:\Dawid\Studia Słupsk\II rok\I semestr\Programowanie\Zad8\Zad8\obj\Debug\Zad8.csprojAssemblyReference.cache
+D:\Dawid\Studia Słupsk\II rok\I semestr\Programowanie\Zad8\Zad8\obj\Debug\Zad8.exe
+D:\Dawid\Studia Słupsk\II rok\I semestr\Programowanie\Zad8\Zad8\obj\Debug\Zad8.pdb

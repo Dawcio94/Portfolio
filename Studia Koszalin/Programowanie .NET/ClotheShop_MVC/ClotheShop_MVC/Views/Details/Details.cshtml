@@ -1,0 +1,59 @@
+﻿@model ClotheShop_MVC.Models.Clothes
+
+
+@{
+    ViewData["Title"] = "Szczegóły";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table>
+        <tr>
+            <td rowspan="4">
+                <img src="@Url.Content("~/Images/" +Model.Image)" />
+            </td>
+            <td>
+                <h2>
+                    @Html.DisplayFor(model=>model.Name)
+                </h2>
+                <hr />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(Model => Model.Description)
+            </td>
+            <td style="font-size:">
+                <br />
+                <br />
+                <br />
+                <br />
+              <h3>@Html.DisplayFor(Model => Model.Price) PLN</h3>  
+                <br />
+                <br />
+                <br />
+                <br />
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <input type="submit" value="Dodaj do koszyka" class="btn btn-default" onclick="window.location.href='@Url.Action("Add","ShoppingCarts",new {id = Model.ProductID,price=Model.Price,name=Model.Name,picture=Model.Image},null)'" />
+                    <br />
+                    <label for="lblResult" value="Dodano do koszyka" runat="server"></label>
+                }
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Numer productu:
+                <br />
+                @Html.DisplayFor(Model => Model.ProductID)
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style2">
+               <h4> @Html.Label("Dostępne!")</h4>
+            </td>
+        </tr>
+</table>
+
+
