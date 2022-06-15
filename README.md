@@ -1,8 +1,7 @@
 # Portfolio
-Jestem studentem na kierunku
+Jestem świeżym absolwentem kierunku
 Informatyki o specjalizacji
-programowania odbywający się w
-formie niestacjonarnej. Moje
+programowania Akademii Pomorskiej w Słupsku. Moje
 zainteresowania w tej dziedzinie
 nauki obiegają w kwestiach
 tworzenia baz danych oraz pisanie
