@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Kalendarz rezerwacji";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    <script src="~/Scripts/dhtmlxScheduler/ext/dhtmlxscheduler_tooltip.js"></script>
+
+    <h2>Kalendarz rezerwacji</h2>
+    <div class="scheduler_container">
+        @Html.Raw(Model.Render())
+    </div>
+    <script>
+        var format = scheduler.date.date_to_str("%d-%m-%Y %H:%i");
+        scheduler.templates.tooltip_text = function (start, end, event) {
+            return "<b>Rezerwacja:</b> " + event.text + "<br/><b>Planowany początek:</b> " +
+                format(start) + "<br/><b>Planowany koniec:</b> " + format(end);
+        };
+    </script>
+</body>

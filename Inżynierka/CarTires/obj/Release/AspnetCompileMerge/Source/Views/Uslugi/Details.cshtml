@@ -1,0 +1,59 @@
+﻿@model CarTiresService.Models.Uslugi
+
+@{
+    ViewBag.Title = "Szczegóły usługi";
+}
+
+<h2>Szczegóły usługi ID:@Model.UslugaId</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Nazwa usługi")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NazwaUslugi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Koszt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Koszt)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Czas trwania")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CzasTrwania)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Typ auta")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypAuta)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Typ felgi")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypFelgi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-info btn-lg" onclick="window.location.href='@Url.Action("Edit",new { id=Model.UslugaId})'">
+        Edytuj
+    </button>
+    @Html.ActionLink("Wróć do listy", "Index")
+</p>

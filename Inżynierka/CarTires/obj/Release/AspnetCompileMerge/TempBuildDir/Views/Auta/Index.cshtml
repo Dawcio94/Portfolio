@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CarTiresService.Models.Auta>
+
+@{
+    ViewBag.Title = "Auta";
+}
+
+<h2>Auta</h2>
+
+<p>
+    @Html.ActionLink("Dodaj nowe auto", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Nazwa auta")
+        </th>
+        <th>
+            @Html.DisplayName("Model auta")
+        </th>
+        <th>
+            @Html.DisplayName("Numer rejestracyjny")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VIN)
+        </th>
+        <th>
+            @Html.DisplayName("Typ auta")
+        </th>
+        <th>
+            @Html.DisplayName("Klient")       
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazwaAuta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelAuta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumerRejestracyjny)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypAuta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Klienci.Imie)
+            @Html.DisplayFor(modelItem => item.Klienci.Nazwisko)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.AutoId }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.AutoId }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.AutoId })
+        </td>
+    </tr>
+}
+
+</table>

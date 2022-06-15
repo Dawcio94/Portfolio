@@ -1,0 +1,75 @@
+﻿@model CarTiresService.Models.Klienci
+
+@{
+    ViewBag.Title = "Usuwanie klienta z bazy";
+}
+
+<h2>Usuwanie klienta ID:@Model.KlientId</h2>
+
+<h3>Czy napewno chcesz usunąć tego klienta?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Imię")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Numer telefonu")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumerTelefonu)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Adres")
+        </dt>
+
+        <dd>
+            @{
+                var fullAdres = "";
+                if (Model.Adresy != null)
+                {
+                    var nazwaMiasta = Model.Adresy.Miasto;
+                    var nazwaUlicy = "ul." + Model.Adresy.Ulica.ToString();
+                    var numerDomu = "D:" + Model.Adresy.NumerDomu.ToString();
+                    var numerMieszkania = "M:" + Model.Adresy.NumerMieszkania.ToString();
+                    if (numerMieszkania == "M:" + null)
+                    {
+                        numerMieszkania = "";
+                    }
+                    fullAdres = nazwaMiasta + " " + nazwaUlicy + " " + numerDomu + " " + numerMieszkania;
+                }
+                else
+                {
+                    fullAdres = "";
+                }
+            }
+            @Html.DisplayFor(model => fullAdres)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-info btn-lg" /> |
+            @Html.ActionLink("Anuluj", "Index")
+        </div>
+    }
+</div>

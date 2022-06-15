@@ -1,0 +1,64 @@
+﻿@model CarTiresService.Models.CzesciZamienne
+
+@{
+    ViewBag.Title = "Usuwanie towaru z magazynu";
+}
+
+<h2>Usuwanie towaru ID:@Model.CzescId</h2>
+
+<h3>Czy napewno chcesz usunąć ten towar?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Nazwa części")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NazwaCzesci)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Ilość")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ilosc)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Koszt sztuka")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KosztSztuka)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Typ auta")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypAuta)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Typ felgi")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypFelgi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-info btn-lg" /> |
+            @Html.ActionLink("Anuluj", "Index")
+        </div>
+    }
+</div>

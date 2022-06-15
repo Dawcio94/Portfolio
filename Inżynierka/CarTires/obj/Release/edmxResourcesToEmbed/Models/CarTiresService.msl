@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CarTiresServiceModelStoreContainer" CdmEntityContainer="CarTiresServiceEntities">
+    <EntitySetMapping Name="Adresy">
+      <EntityTypeMapping TypeName="CarTiresServiceModel.Adresy">
+        <MappingFragment StoreEntitySet="Adresy">
+          <ScalarProperty Name="AdresId" ColumnName="AdresId" />
+          <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+          <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+          <ScalarProperty Name="NumerDomu" ColumnName="NumerDomu" />
+          <ScalarProperty Name="NumerMieszkania" ColumnName="NumerMieszkania" />
+          <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Auta">
+      <EntityTypeMapping TypeName="CarTiresServiceModel.Auta">
+        <MappingFragment StoreEntitySet="Auta">
+          <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+          <ScalarProperty Name="NazwaAuta" ColumnName="NazwaAuta" />
+          <ScalarProperty Name="ModelAuta" ColumnName="ModelAuta" />
+          <ScalarProperty Name="NumerRejestracyjny" ColumnName="NumerRejestracyjny" />
+          <ScalarProperty Name="VIN" ColumnName="VIN" />
+          <ScalarProperty Name="TypAuta" ColumnName="TypAuta" />
+          <ScalarProperty Name="KlientId" ColumnName="KlientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CzesciZamienne">
+      <EntityTypeMapping TypeName="CarTiresServiceModel.CzesciZamienne">
+        <MappingFragment StoreEntitySet="CzesciZamienne">
+          <ScalarProperty Name="CzescId" ColumnName="CzescId" />
+          <ScalarProperty Name="NazwaCzesci" ColumnName="NazwaCzesci" />
+          <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+          <ScalarProperty Name="KosztSztuka" ColumnName="KosztSztuka" />
+          <ScalarProperty Name="TypAuta" ColumnName="TypAuta" />
+          <ScalarProperty Name="TypFelgi" ColumnName="TypFelgi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klienci">
+      <EntityTypeMapping TypeName="CarTiresServiceModel.Klienci">
+        <MappingFragment StoreEntitySet="Klienci">
+          <ScalarProperty Name="KlientId" ColumnName="KlientId" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="NumerTelefonu" ColumnName="NumerTelefonu" />
+          <ScalarProperty Name="AdresId" ColumnName="AdresId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Raport">
+      <EntityTypeMapping TypeName="CarTiresServiceModel.Raport">
+        <MappingFragment StoreEntitySet="Raport">
+          <ScalarProperty Name="RaportId" ColumnName="RaportId" />
+          <ScalarProperty Name="RezerwacjaId" ColumnName="RezerwacjaId" />
+          <ScalarProperty Name="KosztCalkowity" ColumnName="KosztCalkowity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RaportCzesc">
+      <EntityTypeMapping TypeName="CarTiresServiceModel.RaportCzesc">
+        <MappingFragment StoreEntitySet="RaportCzesc">
+          <ScalarProperty Name="RaportCzescId" ColumnName="RaportCzescId" />
+          <ScalarProperty Name="RaportId" ColumnName="RaportId" />
+          <ScalarProperty Name="CzescId" ColumnName="CzescId" />
+          <ScalarProperty Name="IloscUzytejCzesci" ColumnName="IloscUzytejCzesci" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RaportUslugi">
+      <EntityTypeMapping TypeName="CarTiresServiceModel.RaportUslugi">
+        <MappingFragment StoreEntitySet="RaportUslugi">
+          <ScalarProperty Name="RaportUslugiId" ColumnName="RaportUslugiId" />
+          <ScalarProperty Name="RaportId" ColumnName="RaportId" />
+          <ScalarProperty Name="UslugaId" ColumnName="UslugaId" />
+          <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RezerwacjaAuto">
+      <EntityTypeMapping TypeName="CarTiresServiceModel.RezerwacjaAuto">
+        <MappingFragment StoreEntitySet="RezerwacjaAuto">
+          <ScalarProperty Name="RezerwacjaAutoId" ColumnName="RezerwacjaAutoId" />
+          <ScalarProperty Name="RezerwacjeId" ColumnName="RezerwacjeId" />
+          <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RezerwacjaUsluga">
+      <EntityTypeMapping TypeName="CarTiresServiceModel.RezerwacjaUsluga">
+        <MappingFragment StoreEntitySet="RezerwacjaUsluga">
+          <ScalarProperty Name="RezerwacjaUslugaId" ColumnName="RezerwacjaUslugaId" />
+          <ScalarProperty Name="RezerwacjaId" ColumnName="RezerwacjaId" />
+          <ScalarProperty Name="UslugaId" ColumnName="UslugaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rezerwacje">
+      <EntityTypeMapping TypeName="CarTiresServiceModel.Rezerwacje">
+        <MappingFragment StoreEntitySet="Rezerwacje">
+          <ScalarProperty Name="RezerwacjeId" ColumnName="RezerwacjeId" />
+          <ScalarProperty Name="KlientId" ColumnName="KlientId" />
+          <ScalarProperty Name="DataTime" ColumnName="DataTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CarTiresServiceModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uslugi">
+      <EntityTypeMapping TypeName="CarTiresServiceModel.Uslugi">
+        <MappingFragment StoreEntitySet="Uslugi">
+          <ScalarProperty Name="UslugaId" ColumnName="UslugaId" />
+          <ScalarProperty Name="NazwaUslugi" ColumnName="NazwaUslugi" />
+          <ScalarProperty Name="Koszt" ColumnName="Koszt" />
+          <ScalarProperty Name="CzasTrwania" ColumnName="CzasTrwania" />
+          <ScalarProperty Name="TypAuta" ColumnName="TypAuta" />
+          <ScalarProperty Name="TypFelgi" ColumnName="TypFelgi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CarTiresServiceModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CarTiresServiceModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CarTiresServiceModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="CarTiresServiceModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarTiresServiceModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="CarTiresServiceModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CarTiresServiceModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CarTiresServiceModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CarTiresServiceModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

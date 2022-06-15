@@ -1,0 +1,74 @@
+﻿@model CarTiresService.Models.Klienci
+
+@{
+    ViewBag.Title = "Edycja danych klienta";
+}
+
+<h2>Edytuj dane klienta ID:@Model.KlientId</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.KlientId)
+
+        <div class="form-group">
+            @Html.Label("Imię", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Imie, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Imie, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nazwisko, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nazwisko, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nazwisko, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Numer telefonu", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NumerTelefonu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NumerTelefonu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Adres", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @Html.LabelFor(model => model.AdresId, (string)@ViewBag.Adres, htmlAttributes: new { @class = "control-label" })
+                @Html.ValidationMessageFor(model => model.AdresId, "", new { @class = "text-danger" })
+                @{ var miasto = @ViewBag.Miasto;
+                }
+                <input type="button" class="btn btn-primary" value="Edytuj"
+                       @{ if (string.IsNullOrEmpty(miasto)) { @: disabled="disabled"
+                       } } onclick="window.location.href='@Url.Action("EditSimple", "Adresy",new { id=Model.AdresId})'" />
+                <input type="button" class="btn btn-primary" value="Dodaj"
+                       @{ if (!string.IsNullOrEmpty(miasto)) { @: disabled="disabled"
+                       } } onclick="window.location.href='@Url.Action("CreateSimple", "Adresy",new { klientid=Model.KlientId})'" />
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <input type="hidden" value="@ViewBag.AdresId" name="adresId" />
+            <input type="submit" value="Zapisz" class="btn btn-info btn-lg" />
+            @Html.ActionLink("Anuluj", "Index")
+
+        </div>
+    </div>
+
+    <div>
+
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

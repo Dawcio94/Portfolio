@@ -1,0 +1,72 @@
+﻿@model IEnumerable<CarTiresService.Models.Klienci>
+
+@{
+    ViewBag.Title = "Klienci";
+}
+
+<h2>Klienci</h2>
+
+<p>
+    @Html.ActionLink("Dodaj nowego klienta", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Imię")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </th>
+        <th>
+            @Html.DisplayName("Numer telefonu")
+        </th>
+        <th>
+            @Html.DisplayName("Adres")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nazwisko)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumerTelefonu)
+        </td>
+        <td>
+            @{
+                var fullAdres = "";
+                if (item.Adresy!=null)
+                {
+                    var nazwaMiasta = item.Adresy.Miasto;
+                    var nazwaUlicy = "ul." + item.Adresy.Ulica.ToString();
+                    var numerDomu = "D:" + item.Adresy.NumerDomu.ToString();
+                    var numerMieszkania = "M:" + item.Adresy.NumerMieszkania.ToString();
+                    if (numerMieszkania == "M:" + null)
+                    {
+                        numerMieszkania = "";
+                    }
+                    fullAdres = nazwaMiasta + " " + nazwaUlicy + " " + numerDomu + " " + numerMieszkania;
+                }
+                else
+                {
+                    fullAdres = "";
+                }
+
+            }
+
+            @Html.DisplayFor(modelItem => fullAdres)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.KlientId }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.KlientId }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.KlientId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,93 @@
+﻿@model CarTiresService.Models.Rezerwacje
+
+@{
+    ViewBag.Title = "Usuwanie rezerwacji";
+}
+
+<h2>Usuwanie rezerwacji ID:@Model.RezerwacjeId</h2>
+
+<h3>Czy napewno chcesz usunąć tą rezerwację?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Data i czas")
+        </dt>
+
+        <dd>
+            @{
+                var czasData = (DateTime)Model.DataTime;
+                var toString = czasData.ToString("dd.MM.yyyy HH:mm");
+                @Html.DisplayFor(modelItem => toString);
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Klient")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => (model.Klienci.Imie))
+            @Html.DisplayFor(model => (model.Klienci.Nazwisko))
+        </dd>
+        <dt>
+            @Html.DisplayName("Numer telefonu")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => (model.Klienci.NumerTelefonu))
+        </dd>
+        <dt>
+            @Html.DisplayName("Auto")
+        </dt>
+        <dd>
+            @{var fullAuto = "";
+                if (Model.RezerwacjaAuto.Count != 0)
+                {
+                    var nazwaAuta = Model.RezerwacjaAuto.Select(s => s.Auta.NazwaAuta).FirstOrDefault();
+                    var modelAuta = Model.RezerwacjaAuto.Select(s => s.Auta.ModelAuta).FirstOrDefault();
+                    var numerRej = Model.RezerwacjaAuto.Select(s => s.Auta.NumerRejestracyjny).FirstOrDefault();
+                    fullAuto = nazwaAuta + " " + modelAuta + " " + numerRej;
+                }
+                else
+                {
+                    fullAuto = "";
+                }
+            }
+
+            @Html.DisplayFor(model => fullAuto)
+        </dd>
+        <dt>
+            @Html.DisplayName("Usluga")
+        </dt>
+        <dd>
+            @{
+                var fullUsluga = "";
+                if (Model.RezerwacjaUsluga.Count != 0)
+                {
+                    var nazwaUslugi = Model.RezerwacjaUsluga.Select(s => s.Uslugi.NazwaUslugi).FirstOrDefault();
+                    var rodzajFelgi = Model.RezerwacjaUsluga.Select(s => s.Uslugi.TypFelgi).FirstOrDefault();
+                    var kosztUslugi = Model.RezerwacjaUsluga.Select(s => s.Uslugi.Koszt).FirstOrDefault();
+                    fullUsluga = nazwaUslugi + " " + rodzajFelgi + " Koszt:" + kosztUslugi;
+                }
+                else
+                {
+                    fullUsluga = "";
+                }
+            }
+
+            @Html.DisplayFor(modelItem => fullUsluga)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-info btn-lg" />
+            @Html.ActionLink("Anuluj", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,70 @@
+﻿@model CarTiresService.Models.CzesciZamienne
+
+@{
+    ViewBag.Title = "Dodawanie towaru ";
+}
+
+<h2>Dodaj nowy towar</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.NazwaCzesci, "Nazwa części", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NazwaCzesci, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NazwaCzesci, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ilosc, "Ilość", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ilosc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ilosc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KosztSztuka, "Koszt szt.", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KosztSztuka, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KosztSztuka, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TypAuta, "Typ auta", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="input-group">
+                @Html.DropDownListFor(model => model.TypAuta, new SelectList(Enum.GetValues(typeof(CarTiresService.Models.TypeOfCarEnum))),
+               "Wybierz typ auta", htmlAttributes: new { @class = "control-label col-md-4" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TypFelgi, "Typ felgi", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="input-group">
+                @Html.DropDownListFor(model => model.TypFelgi, new SelectList(Enum.GetValues(typeof(CarTiresService.Models.TypeOfWheel))),
+               "Wybierz typ felgi", htmlAttributes: new { @class = "control-label col-md-4" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="hidden" value=@ViewBag.RaportId name="raportId" />
+                <input type="hidden" value=@ViewBag.RezerwacjaId name="rezerwacjaId" />
+                <input type="submit" value="Dodaj" class="btn btn-info btn-lg" />
+                @Html.ActionLink("Anuluj", "Edit", "Raport", new { id = @ViewBag.RaportId, rezerwacjaId = @ViewBag.RezerwacjaId }, null)
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

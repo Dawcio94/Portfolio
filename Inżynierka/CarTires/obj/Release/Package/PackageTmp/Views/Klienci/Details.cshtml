@@ -1,0 +1,63 @@
+﻿@model CarTiresService.Models.Klienci
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>Szczegóły klienta ID:@Model.KlientId</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Imię")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Numer telefonu")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumerTelefonu)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Adres")
+        </dt>
+
+        <dd>
+            @{
+                var nazwaMiasta = Model.Adresy.Miasto;
+                var nazwaUlicy = "ul." + Model.Adresy.Ulica.ToString();
+                var numerDomu = "D:" + Model.Adresy.NumerDomu.ToString();
+                var numerMieszkania = "M:" + Model.Adresy.NumerMieszkania.ToString();
+                if (numerMieszkania == "M:" + null)
+                {
+                    numerMieszkania = "";
+                }
+                var fullAdres = nazwaMiasta + " " + nazwaUlicy + " " + numerDomu + " " + numerMieszkania;
+            }
+            @Html.DisplayFor(model => fullAdres)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-info btn-lg" onclick="window.location.href='@Url.Action("Edit",new { id=Model.KlientId})'">
+        Edytuj
+    </button>
+    @Html.ActionLink("Wróć do listy", "Index")
+</p>

@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarTiresServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adresy">
+    <Key>
+      <PropertyRef Name="AdresId" />
+    </Key>
+    <Property Name="AdresId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Miasto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Ulica" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NumerDomu" Type="Int32" />
+    <Property Name="NumerMieszkania" Type="Int32" />
+    <Property Name="KodPocztowy" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Klienci" Relationship="Self.FK__Klienci__AdresId__3A81B327" FromRole="Adresy" ToRole="Klienci" />
+  </EntityType>
+  <EntityType Name="Auta">
+    <Key>
+      <PropertyRef Name="AutoId" />
+    </Key>
+    <Property Name="AutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazwaAuta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ModelAuta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NumerRejestracyjny" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="VIN" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+    <Property Name="TypAuta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="KlientId" Type="Int32" />
+    <NavigationProperty Name="Klienci" Relationship="Self.FK__Auta__KlientId__403A8C7D" FromRole="Auta" ToRole="Klienci" />
+    <NavigationProperty Name="RezerwacjaAuto" Relationship="Self.FK__Rezerwacj__AutoI__3E52440B" FromRole="Auta" ToRole="RezerwacjaAuto" />
+    <NavigationProperty Name="RezerwacjaAuto1" Relationship="Self.FK__Rezerwacj__AutoI__5441852A" FromRole="Auta" ToRole="RezerwacjaAuto" />
+  </EntityType>
+  <EntityType Name="CzesciZamienne">
+    <Key>
+      <PropertyRef Name="CzescId" />
+    </Key>
+    <Property Name="CzescId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazwaCzesci" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Ilosc" Type="Int32" />
+    <Property Name="KosztSztuka" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="TypAuta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TypFelgi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="RaportCzesc" Relationship="Self.FK__RaportCze__Czesc__3A81B327" FromRole="CzesciZamienne" ToRole="RaportCzesc" />
+    <NavigationProperty Name="RaportCzesc1" Relationship="Self.FK__RaportCze__Czesc__52593CB8" FromRole="CzesciZamienne" ToRole="RaportCzesc" />
+  </EntityType>
+  <EntityType Name="Klienci">
+    <Key>
+      <PropertyRef Name="KlientId" />
+    </Key>
+    <Property Name="KlientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Imie" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Nazwisko" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NumerTelefonu" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="AdresId" Type="Int32" />
+    <NavigationProperty Name="Adresy" Relationship="Self.FK__Klienci__AdresId__3A81B327" FromRole="Klienci" ToRole="Adresy" />
+    <NavigationProperty Name="Auta" Relationship="Self.FK__Auta__KlientId__403A8C7D" FromRole="Klienci" ToRole="Auta" />
+    <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Rezerwacj__Klien__3D5E1FD2" FromRole="Klienci" ToRole="Rezerwacje" />
+  </EntityType>
+  <EntityType Name="Raport">
+    <Key>
+      <PropertyRef Name="RaportId" />
+    </Key>
+    <Property Name="RaportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RezerwacjaId" Type="Int32" />
+    <Property Name="KosztCalkowity" Type="Decimal" Precision="5" Scale="2" />
+    <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Raport__Rezerwac__4CA06362" FromRole="Raport" ToRole="Rezerwacje" />
+    <NavigationProperty Name="RaportCzesc" Relationship="Self.FK__RaportCze__Rapor__4F7CD00D" FromRole="Raport" ToRole="RaportCzesc" />
+    <NavigationProperty Name="RaportUslugi" Relationship="Self.FK__RaportUsl__Rapor__534D60F1" FromRole="Raport" ToRole="RaportUslugi" />
+  </EntityType>
+  <EntityType Name="RaportCzesc">
+    <Key>
+      <PropertyRef Name="RaportCzescId" />
+    </Key>
+    <Property Name="RaportCzescId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RaportId" Type="Int32" />
+    <Property Name="CzescId" Type="Int32" />
+    <Property Name="IloscUzytejCzesci" Type="Int32" />
+    <NavigationProperty Name="CzesciZamienne" Relationship="Self.FK__RaportCze__Czesc__3A81B327" FromRole="RaportCzesc" ToRole="CzesciZamienne" />
+    <NavigationProperty Name="CzesciZamienne1" Relationship="Self.FK__RaportCze__Czesc__52593CB8" FromRole="RaportCzesc" ToRole="CzesciZamienne" />
+    <NavigationProperty Name="Raport" Relationship="Self.FK__RaportCze__Rapor__4F7CD00D" FromRole="RaportCzesc" ToRole="Raport" />
+  </EntityType>
+  <EntityType Name="RaportUslugi">
+    <Key>
+      <PropertyRef Name="RaportUslugiId" />
+    </Key>
+    <Property Name="RaportUslugiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RaportId" Type="Int32" />
+    <Property Name="UslugaId" Type="Int32" />
+    <Property Name="Ilosc" Type="Int32" />
+    <NavigationProperty Name="Raport" Relationship="Self.FK__RaportUsl__Rapor__534D60F1" FromRole="RaportUslugi" ToRole="Raport" />
+    <NavigationProperty Name="Uslugi" Relationship="Self.FK__RaportUsl__Uslug__3D5E1FD2" FromRole="RaportUslugi" ToRole="Uslugi" />
+    <NavigationProperty Name="Uslugi1" Relationship="Self.FK__RaportUsl__Uslug__534D60F1" FromRole="RaportUslugi" ToRole="Uslugi" />
+  </EntityType>
+  <EntityType Name="RezerwacjaAuto">
+    <Key>
+      <PropertyRef Name="RezerwacjaAutoId" />
+    </Key>
+    <Property Name="RezerwacjaAutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RezerwacjeId" Type="Int32" />
+    <Property Name="AutoId" Type="Int32" />
+    <NavigationProperty Name="Auta" Relationship="Self.FK__Rezerwacj__AutoI__3E52440B" FromRole="RezerwacjaAuto" ToRole="Auta" />
+    <NavigationProperty Name="Auta1" Relationship="Self.FK__Rezerwacj__AutoI__5441852A" FromRole="RezerwacjaAuto" ToRole="Auta" />
+    <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Rezerwacj__Rezer__4316F928" FromRole="RezerwacjaAuto" ToRole="Rezerwacje" />
+  </EntityType>
+  <EntityType Name="RezerwacjaUsluga">
+    <Key>
+      <PropertyRef Name="RezerwacjaUslugaId" />
+    </Key>
+    <Property Name="RezerwacjaUslugaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RezerwacjaId" Type="Int32" />
+    <Property Name="UslugaId" Type="Int32" />
+    <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Rezerwacj__Rezer__48CFD27E" FromRole="RezerwacjaUsluga" ToRole="Rezerwacje" />
+    <NavigationProperty Name="Uslugi" Relationship="Self.FK__Rezerwacj__Uslug__412EB0B6" FromRole="RezerwacjaUsluga" ToRole="Uslugi" />
+    <NavigationProperty Name="Uslugi1" Relationship="Self.FK__Rezerwacj__Uslug__5535A963" FromRole="RezerwacjaUsluga" ToRole="Uslugi" />
+  </EntityType>
+  <EntityType Name="Rezerwacje">
+    <Key>
+      <PropertyRef Name="RezerwacjeId" />
+    </Key>
+    <Property Name="RezerwacjeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KlientId" Type="Int32" />
+    <Property Name="DataTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Klienci" Relationship="Self.FK__Rezerwacj__Klien__3D5E1FD2" FromRole="Rezerwacje" ToRole="Klienci" />
+    <NavigationProperty Name="Raport" Relationship="Self.FK__Raport__Rezerwac__4CA06362" FromRole="Rezerwacje" ToRole="Raport" />
+    <NavigationProperty Name="RezerwacjaAuto" Relationship="Self.FK__Rezerwacj__Rezer__4316F928" FromRole="Rezerwacje" ToRole="RezerwacjaAuto" />
+    <NavigationProperty Name="RezerwacjaUsluga" Relationship="Self.FK__Rezerwacj__Rezer__48CFD27E" FromRole="Rezerwacje" ToRole="RezerwacjaUsluga" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Uslugi">
+    <Key>
+      <PropertyRef Name="UslugaId" />
+    </Key>
+    <Property Name="UslugaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazwaUslugi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Koszt" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="CzasTrwania" Type="Time" Precision="7" />
+    <Property Name="TypAuta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TypFelgi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="RaportUslugi" Relationship="Self.FK__RaportUsl__Uslug__3D5E1FD2" FromRole="Uslugi" ToRole="RaportUslugi" />
+    <NavigationProperty Name="RaportUslugi1" Relationship="Self.FK__RaportUsl__Uslug__534D60F1" FromRole="Uslugi" ToRole="RaportUslugi" />
+    <NavigationProperty Name="RezerwacjaUsluga" Relationship="Self.FK__Rezerwacj__Uslug__412EB0B6" FromRole="Uslugi" ToRole="RezerwacjaUsluga" />
+    <NavigationProperty Name="RezerwacjaUsluga1" Relationship="Self.FK__Rezerwacj__Uslug__5535A963" FromRole="Uslugi" ToRole="RezerwacjaUsluga" />
+  </EntityType>
+  <Association Name="FK__Klienci__AdresId__3A81B327">
+    <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adresy">
+        <PropertyRef Name="AdresId" />
+      </Principal>
+      <Dependent Role="Klienci">
+        <PropertyRef Name="AdresId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Auta__KlientId__403A8C7D">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Auta" Type="Self.Auta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="KlientId" />
+      </Principal>
+      <Dependent Role="Auta">
+        <PropertyRef Name="KlientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rezerwacj__AutoI__3E52440B">
+    <End Role="Auta" Type="Self.Auta" Multiplicity="0..1" />
+    <End Role="RezerwacjaAuto" Type="Self.RezerwacjaAuto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Auta">
+        <PropertyRef Name="AutoId" />
+      </Principal>
+      <Dependent Role="RezerwacjaAuto">
+        <PropertyRef Name="AutoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rezerwacj__AutoI__5441852A">
+    <End Role="Auta" Type="Self.Auta" Multiplicity="0..1" />
+    <End Role="RezerwacjaAuto" Type="Self.RezerwacjaAuto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Auta">
+        <PropertyRef Name="AutoId" />
+      </Principal>
+      <Dependent Role="RezerwacjaAuto">
+        <PropertyRef Name="AutoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RaportCze__Czesc__3A81B327">
+    <End Role="CzesciZamienne" Type="Self.CzesciZamienne" Multiplicity="0..1" />
+    <End Role="RaportCzesc" Type="Self.RaportCzesc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CzesciZamienne">
+        <PropertyRef Name="CzescId" />
+      </Principal>
+      <Dependent Role="RaportCzesc">
+        <PropertyRef Name="CzescId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RaportCze__Czesc__52593CB8">
+    <End Role="CzesciZamienne" Type="Self.CzesciZamienne" Multiplicity="0..1" />
+    <End Role="RaportCzesc" Type="Self.RaportCzesc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CzesciZamienne">
+        <PropertyRef Name="CzescId" />
+      </Principal>
+      <Dependent Role="RaportCzesc">
+        <PropertyRef Name="CzescId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rezerwacj__Klien__3D5E1FD2">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1" />
+    <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="KlientId" />
+      </Principal>
+      <Dependent Role="Rezerwacje">
+        <PropertyRef Name="KlientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Raport__Rezerwac__4CA06362">
+    <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="0..1" />
+    <End Role="Raport" Type="Self.Raport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezerwacje">
+        <PropertyRef Name="RezerwacjeId" />
+      </Principal>
+      <Dependent Role="Raport">
+        <PropertyRef Name="RezerwacjaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RaportCze__Rapor__4F7CD00D">
+    <End Role="Raport" Type="Self.Raport" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RaportCzesc" Type="Self.RaportCzesc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Raport">
+        <PropertyRef Name="RaportId" />
+      </Principal>
+      <Dependent Role="RaportCzesc">
+        <PropertyRef Name="RaportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RaportUsl__Rapor__534D60F1">
+    <End Role="Raport" Type="Self.Raport" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RaportUslugi" Type="Self.RaportUslugi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Raport">
+        <PropertyRef Name="RaportId" />
+      </Principal>
+      <Dependent Role="RaportUslugi">
+        <PropertyRef Name="RaportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RaportUsl__Uslug__3D5E1FD2">
+    <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+    <End Role="RaportUslugi" Type="Self.RaportUslugi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uslugi">
+        <PropertyRef Name="UslugaId" />
+      </Principal>
+      <Dependent Role="RaportUslugi">
+        <PropertyRef Name="UslugaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RaportUsl__Uslug__534D60F1">
+    <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+    <End Role="RaportUslugi" Type="Self.RaportUslugi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uslugi">
+        <PropertyRef Name="UslugaId" />
+      </Principal>
+      <Dependent Role="RaportUslugi">
+        <PropertyRef Name="UslugaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rezerwacj__Rezer__4316F928">
+    <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RezerwacjaAuto" Type="Self.RezerwacjaAuto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezerwacje">
+        <PropertyRef Name="RezerwacjeId" />
+      </Principal>
+      <Dependent Role="RezerwacjaAuto">
+        <PropertyRef Name="RezerwacjeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rezerwacj__Rezer__48CFD27E">
+    <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RezerwacjaUsluga" Type="Self.RezerwacjaUsluga" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezerwacje">
+        <PropertyRef Name="RezerwacjeId" />
+      </Principal>
+      <Dependent Role="RezerwacjaUsluga">
+        <PropertyRef Name="RezerwacjaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rezerwacj__Uslug__412EB0B6">
+    <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+    <End Role="RezerwacjaUsluga" Type="Self.RezerwacjaUsluga" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uslugi">
+        <PropertyRef Name="UslugaId" />
+      </Principal>
+      <Dependent Role="RezerwacjaUsluga">
+        <PropertyRef Name="UslugaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rezerwacj__Uslug__5535A963">
+    <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+    <End Role="RezerwacjaUsluga" Type="Self.RezerwacjaUsluga" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uslugi">
+        <PropertyRef Name="UslugaId" />
+      </Principal>
+      <Dependent Role="RezerwacjaUsluga">
+        <PropertyRef Name="UslugaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarTiresServiceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adresy" EntityType="Self.Adresy" />
+    <EntitySet Name="Auta" EntityType="Self.Auta" />
+    <EntitySet Name="CzesciZamienne" EntityType="Self.CzesciZamienne" />
+    <EntitySet Name="Klienci" EntityType="Self.Klienci" />
+    <EntitySet Name="Raport" EntityType="Self.Raport" />
+    <EntitySet Name="RaportCzesc" EntityType="Self.RaportCzesc" />
+    <EntitySet Name="RaportUslugi" EntityType="Self.RaportUslugi" />
+    <EntitySet Name="RezerwacjaAuto" EntityType="Self.RezerwacjaAuto" />
+    <EntitySet Name="RezerwacjaUsluga" EntityType="Self.RezerwacjaUsluga" />
+    <EntitySet Name="Rezerwacje" EntityType="Self.Rezerwacje" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Uslugi" EntityType="Self.Uslugi" />
+    <AssociationSet Name="FK__Klienci__AdresId__3A81B327" Association="Self.FK__Klienci__AdresId__3A81B327">
+      <End Role="Adresy" EntitySet="Adresy" />
+      <End Role="Klienci" EntitySet="Klienci" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Auta__KlientId__403A8C7D" Association="Self.FK__Auta__KlientId__403A8C7D">
+      <End Role="Klienci" EntitySet="Klienci" />
+      <End Role="Auta" EntitySet="Auta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rezerwacj__AutoI__3E52440B" Association="Self.FK__Rezerwacj__AutoI__3E52440B">
+      <End Role="Auta" EntitySet="Auta" />
+      <End Role="RezerwacjaAuto" EntitySet="RezerwacjaAuto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rezerwacj__AutoI__5441852A" Association="Self.FK__Rezerwacj__AutoI__5441852A">
+      <End Role="Auta" EntitySet="Auta" />
+      <End Role="RezerwacjaAuto" EntitySet="RezerwacjaAuto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RaportCze__Czesc__3A81B327" Association="Self.FK__RaportCze__Czesc__3A81B327">
+      <End Role="CzesciZamienne" EntitySet="CzesciZamienne" />
+      <End Role="RaportCzesc" EntitySet="RaportCzesc" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RaportCze__Czesc__52593CB8" Association="Self.FK__RaportCze__Czesc__52593CB8">
+      <End Role="CzesciZamienne" EntitySet="CzesciZamienne" />
+      <End Role="RaportCzesc" EntitySet="RaportCzesc" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rezerwacj__Klien__3D5E1FD2" Association="Self.FK__Rezerwacj__Klien__3D5E1FD2">
+      <End Role="Klienci" EntitySet="Klienci" />
+      <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Raport__Rezerwac__4CA06362" Association="Self.FK__Raport__Rezerwac__4CA06362">
+      <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+      <End Role="Raport" EntitySet="Raport" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RaportCze__Rapor__4F7CD00D" Association="Self.FK__RaportCze__Rapor__4F7CD00D">
+      <End Role="Raport" EntitySet="Raport" />
+      <End Role="RaportCzesc" EntitySet="RaportCzesc" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RaportUsl__Rapor__534D60F1" Association="Self.FK__RaportUsl__Rapor__534D60F1">
+      <End Role="Raport" EntitySet="Raport" />
+      <End Role="RaportUslugi" EntitySet="RaportUslugi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RaportUsl__Uslug__3D5E1FD2" Association="Self.FK__RaportUsl__Uslug__3D5E1FD2">
+      <End Role="Uslugi" EntitySet="Uslugi" />
+      <End Role="RaportUslugi" EntitySet="RaportUslugi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RaportUsl__Uslug__534D60F1" Association="Self.FK__RaportUsl__Uslug__534D60F1">
+      <End Role="Uslugi" EntitySet="Uslugi" />
+      <End Role="RaportUslugi" EntitySet="RaportUslugi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rezerwacj__Rezer__4316F928" Association="Self.FK__Rezerwacj__Rezer__4316F928">
+      <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+      <End Role="RezerwacjaAuto" EntitySet="RezerwacjaAuto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rezerwacj__Rezer__48CFD27E" Association="Self.FK__Rezerwacj__Rezer__48CFD27E">
+      <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+      <End Role="RezerwacjaUsluga" EntitySet="RezerwacjaUsluga" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rezerwacj__Uslug__412EB0B6" Association="Self.FK__Rezerwacj__Uslug__412EB0B6">
+      <End Role="Uslugi" EntitySet="Uslugi" />
+      <End Role="RezerwacjaUsluga" EntitySet="RezerwacjaUsluga" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rezerwacj__Uslug__5535A963" Association="Self.FK__Rezerwacj__Uslug__5535A963">
+      <End Role="Uslugi" EntitySet="Uslugi" />
+      <End Role="RezerwacjaUsluga" EntitySet="RezerwacjaUsluga" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CarTiresServiceModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CarTiresServiceModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

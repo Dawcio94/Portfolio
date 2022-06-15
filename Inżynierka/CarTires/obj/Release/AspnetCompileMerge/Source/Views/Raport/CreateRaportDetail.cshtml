@@ -1,0 +1,445 @@
+﻿@{
+    ViewBag.Title = "Szczegółowy raport";
+}
+<body>
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <h2>Uzupełnienie raportu rezerwacji ID:@ViewBag.RezerwacjaId</h2>
+
+    <h3>Rezerwacja klienta:@ViewBag.Klient</h3>
+    <h3>Auto klienta:@ViewBag.Auto</h3>
+    <div class="input-group">
+        <input list="browsers" id="browserId" type="text" class="form-control col-md-3">
+        <datalist id="browsers">
+            @{
+                foreach (var item in (@ViewBag.Czesci as List<CarTiresService.Models.CzesciZamienne>))
+                {
+                    string id = item.CzescId.ToString()+"Część";
+                    string czesc = item.NazwaCzesci+" Auto:"+item.TypAuta+" Felga:"+item.TypFelgi+" Koszt:"+item.KosztSztuka;
+                    <option value=@id>@czesc</option>
+                }
+                foreach (var item in (@ViewBag.Uslugi as List<CarTiresService.Models.Uslugi>))
+                {
+                    string id = item.UslugaId.ToString()+"Usługa";
+                    string czesc = string.Concat(item.NazwaUslugi, " Auto:", item.TypAuta, " Felga:", item.TypFelgi, " Koszt:", item.Koszt);
+
+                    <option value=@id>@czesc</option>
+                }
+            }
+        </datalist>
+        <input type="hidden" id="elementId" name="elementId" value="" />
+        <button class="btn btn-primary" type="button" onclick="GetValue()">Dodaj</button>
+
+    </div>
+    <button class="btn btn-primary" type="button" onclick="AddUsluga()">Dodaj usługę</button>
+    <button class="btn btn-primary" type="button" onclick="AddCzesc()">Dodaj część</button>
+    <h4>Usługi</h4>
+    @{ decimal suma = decimal.Zero;}
+    @{int index = 0; }
+    <table class="table">
+        <tbody>
+
+            @foreach (var item in (@ViewBag.RaportUslugi as List<CarTiresService.Models.Uslugi>))
+            {
+                <tr>
+
+                    <td>
+                        <h5>
+                            <input type="hidden" id=@("usluga"+index) value=@item.UslugaId />
+                            @item.NazwaUslugi
+                        </h5>
+                    </td>
+                    <td><h5>@item.CzasTrwania</h5></td>
+                    <td>
+                        <h5>
+                            <input type="text" id=@("kosztzaszt"+index) value=@item.Koszt style="width:30%" disabled="disabled" /> PLN
+                        </h5>
+                    </td>
+                    @{int ilosc = (int)item.RaportUslugi.Where(w => w.RaportId==@ViewBag.RaportId).Select(s => s.Ilosc).FirstOrDefault();}
+                    <td>
+                        <h5>
+                            <input type='button' value='-' id=@("minus"+index) class='qtyminus' field='quantity' />
+                            <input type='text' style="width:30%" name='quantity' id=@("qty"+index) value=@ilosc.ToString() class='qty' />
+                            <input type='button' value='+' id=@("plus"+index) class='qtyplus' field='quantity' />
+                        </h5>
+                    </td>
+                    @{decimal koszt = ilosc * (decimal)item.Koszt;}
+                    <td><h5> Koszt:<input type="text" id=@("koszt"+index) style="width:30%" class="koszt" value=@koszt /></h5></td>
+                    @{suma += koszt;}
+                </tr>
+                index++;
+            }
+        </tbody>
+    </table>
+    <h4>Użyte części</h4>
+    <table class="table">
+        <tbody>
+            @{ int index1 = 0;}
+            @foreach (var item in (@ViewBag.RaportCzesci as List<CarTiresService.Models.CzesciZamienne>))
+            {
+                <tr>
+                    <td>
+                        <h5>
+                            <input type="hidden" id=@("czesc"+index1) value=@item.CzescId />
+                            @item.NazwaCzesci
+                        </h5>
+                    </td>
+                    <td>
+                        <h5>
+                            <input type="text" class="kosztzaszt" id=@("kosztzasztcz"+index1) value=@item.KosztSztuka style="width:30%" disabled="disabled" /> PLN
+                        </h5>
+                    </td>
+                    @{ int ilosc = 0;
+                        if (item.RaportCzesc.Where(w => w.RaportId==@ViewBag.RaportId).Select(s => s.IloscUzytejCzesci).FirstOrDefault()==null)
+                        {
+                            ilosc=0;
+                        }
+                        else
+                        {
+                            ilosc = (int)item.RaportCzesc.Where(w => w.RaportId==@ViewBag.RaportId).Select(s => s.IloscUzytejCzesci).FirstOrDefault();
+                        }
+                    }
+
+                    <td>
+                        <h5>
+                            <input type='button' id=@("minuscz"+index1) value='-' class='qtyminuscz' field='quantity' />
+                            <input type='text' style="width:30%" id=@("qtycz"+index1) name='quantity' value=@ilosc.ToString() class='qty' />
+                            <input type='button' id=@("pluscz"+index1) value='+' class='qtypluscz' field='quantity' />
+                        </h5>
+                    </td>
+                    @{decimal kosztsztuka = (decimal)item.KosztSztuka;}
+                    @{decimal koszt = ilosc * kosztsztuka;}
+                    <td>
+                        <h5> Koszt:<input type="text" id=@("kosztcz"+index1) style="width:30%" class="koszt" value=@koszt /></h5>
+                    </td>
+                    @{suma += koszt;}
+                </tr>
+                index1++;
+            }
+        </tbody>
+    </table>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>
+                    <h3> Suma:<input type="text" id="suma" class="suma" value=@suma /></h3>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info btn-lg" onclick="UpdateRaport()">
+                        Zapisz
+                    </button>
+                    <button type="button" class="btn btn-default" onclick="window.location.href='@Url.Action("DeleteCancelBack", new { id = @ViewBag.RaportId })'">
+                        Anuluj
+                    </button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+            function UpdateRaport() {
+                var suma = parseFloat($("#suma").val().replace(",", "."));
+                var raportId = parseInt(@ViewBag.RaportId);
+                var uslugiarray = [];
+                var czescarray = [];
+                for (let i = 0; i <@index; i++) {
+                    uslugiarray.push($("#usluga"+ i).val() + ":" + $("#qty" + i).val());
+                }
+                for (let k = 0; k <@index1; k++) {
+                    czescarray.push($("#czesc" + k).val() + ":" + $("#qtycz" + k).val());
+                }
+                if (uslugiarray == null) {
+                    uslugiarray.push("0:0");
+                }
+                if (czescarray == null) {
+                    czescarray.push("0:0");
+                }
+
+                $.post("@Url.Action("UpdateRaport")", {
+                    raportId:raportId,
+                    kosztCalkowity:suma,
+                    listauslug:uslugiarray,
+                    listaczesc:czescarray
+                }, function (result) {
+                    window.location.href = '@Url.Action("Index")'
+                });
+            };
+
+        function AddCzesc() {
+            var rezerwacjaId = parseInt(@ViewBag.RezerwacjaId);
+            console.log(rezerwacjaId);
+            var raportId = parseInt(@ViewBag.RaportId);
+            console.log(raportId);
+            var suma = parseFloat($("#suma").val().replace(",", "."));
+                var uslugiarray = [];
+                var czescarray = [];
+                for (let i = 0; i <@index; i++) {
+                    uslugiarray.push($("#usluga"+ i).val() + ":" + $("#qty" + i).val());
+                }
+                for (let k = 0; k <@index1; k++) {
+                    czescarray.push($("#czesc" + k).val() + ":" + $("#qtycz" + k).val());
+                }
+                if (uslugiarray == null) {
+                    uslugiarray.push("0:0");
+                }
+                if (czescarray == null) {
+                    czescarray.push("0:0");
+                }
+
+               $.ajax({
+                url: "@Url.Action("CreateSimpleRaportCzesc", "CzesciZamienne")",
+                type: 'POST',
+                data: {
+                    raportId: raportId,
+                    rezerwacjaId: rezerwacjaId,
+                    kosztCalkowity: suma,
+                    listauslug: uslugiarray,
+                    listaczesc: czescarray
+                },
+                success: result => {
+                    window.location.href = '@Url.Action("CreateSimpleRaport", "CzesciZamienne")?raportId=' + raportId + '&rezerwacjaid=' + rezerwacjaId;
+                },
+                error: (xhr, status, error) => {
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(error);
+                }
+            })
+        };
+
+        function AddUsluga() {
+            var rezerwacjaId = parseInt(@ViewBag.RezerwacjaId);
+            console.log(rezerwacjaId);
+            var raportId = parseInt(@ViewBag.RaportId);
+            console.log(raportId);
+            var suma = parseFloat($("#suma").val().replace(",", "."));
+                var uslugiarray = [];
+                var czescarray = [];
+                for (let i = 0; i <@index; i++) {
+                    uslugiarray.push($("#usluga"+ i).val() + ":" + $("#qty" + i).val());
+                }
+                for (let k = 0; k <@index1; k++) {
+                    czescarray.push($("#czesc" + k).val() + ":" + $("#qtycz" + k).val());
+                }
+                if (uslugiarray == null) {
+                    uslugiarray.push("0:0");
+                }
+                if (czescarray == null) {
+                    czescarray.push("0:0");
+            }
+            $.ajax({
+                url: "@Url.Action("CreateSimpleRaportUsluga", "Uslugi")",
+                type: 'POST',
+                data: {
+                    raportId: raportId,
+                    rezerwacjaId: rezerwacjaId,
+                    kosztCalkowity: suma,
+                    listauslug: uslugiarray,
+                    listaczesc: czescarray
+                },
+                success: result => {
+                    window.location.href = '@Url.Action("CreateSimpleRaport", "Uslugi")?raportId=' + raportId + '&rezerwacjaid=' + rezerwacjaId;
+                },
+                error: (xhr, status, error) => {
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(error);
+                }
+            })
+        };
+
+
+        function GetValue() {
+            const Value = document.getElementById('browserId').value;
+
+            if (!Value) return;
+
+            const Text = document.querySelector('option[value="' + Value + '"]').text;
+
+            const option = document.createElement("option");
+            option.value = Value;
+            option.text = Text;
+            var rezerwacjaId = parseInt(@ViewBag.RezerwacjaId);
+            var raportId = parseInt(@ViewBag.RaportId);
+            var suma = parseFloat($("#suma").val().replace(",", "."));
+                var uslugiarray = [];
+                var czescarray = [];
+                for (let i = 0; i <@index; i++) {
+                    uslugiarray.push($("#usluga"+ i).val() + ":" + $("#qty" + i).val());
+                }
+                for (let k = 0; k <@index1; k++) {
+                    czescarray.push($("#czesc" + k).val() + ":" + $("#qtycz" + k).val());
+                }
+                if (uslugiarray == null) {
+                    uslugiarray.push("0:0");
+                }
+                if (czescarray == null) {
+                    czescarray.push("0:0");
+                }
+            $.post("@Url.Action("UpdateDetailRaport")", {
+                raportId:raportId,
+                rezerwacjaId:rezerwacjaId,
+                elementId:option.value,
+                kosztCalkowity:suma,
+                listauslug:uslugiarray,
+                listaczesc:czescarray
+                }, function (result) {
+                window.location.href = '@Url.Action("CreateRaportDetail", "Raport")?raportId=' + raportId + '&rezerwacjaid=' + rezerwacjaId;
+                });
+        };
+
+            $('.qtyplus').click(function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                var id = $this.prop('id').replace('plus',"");
+                var $target = $this.prev('input[name=' + $this.attr('field') + ']');
+                var currentVal = parseInt($target.val());
+
+                if (!isNaN(currentVal)) {
+                    $target.val(currentVal + 1);
+
+                } else {
+                    $target.val(0);
+                }
+
+                var kosztzaszt = parseFloat($('#kosztzaszt' + id).val().replace(",", "."));
+                var quantity = parseInt($('#qty' + id).val());
+
+                var koszt = quantity * kosztzaszt;
+
+                $('#koszt' + id).val(koszt);
+
+                var suma = parseFloat($('#suma').val().replace(",", "."));
+                suma += kosztzaszt;
+
+                $('#suma').val(Math.round(suma * 100) / 100);
+
+            });
+
+
+        $(".qtyminus").click(function (e) {
+            e.preventDefault();
+            var $this = $(this);
+            var id = $this.prop('id').replace('minus', "");
+            var $target = $this.next('input[name=' + $this.attr('field') + ']');
+            var currentVal = parseInt($target.val());
+            var kosztzaszt = 0;
+
+            if (currentVal - 1 < 0) {
+                kosztzaszt = 0;
+            }
+            else {
+                kosztzaszt = parseFloat($('#kosztzaszt' + id).val().replace(",", "."));
+            }
+
+            if (!isNaN(currentVal)) {
+                $target.val((currentVal == 0) ? 0 : currentVal - 1);
+
+            } else {
+                $target.val(0);
+            }
+
+            var quantity = parseInt($('#qty' + id).val());
+
+            var koszt = quantity * kosztzaszt;
+
+            $('#koszt' + id).val(koszt);
+
+            var suma = parseFloat($('#suma').val().replace(",","."));
+
+                suma -= kosztzaszt;
+
+            if (suma < 0) {
+                suma = 0;
+            }
+
+            $('#suma').val(Math.round(suma * 100) / 100);
+        });
+
+
+
+
+
+
+
+        $('.qtypluscz').click(function (e) {
+            e.preventDefault();
+            var $this = $(this);
+            var id = $this.prop('id').replace('pluscz', "");
+            var $target = $this.prev('input[name=' + $this.attr('field') + ']');
+
+            var currentVal = parseInt($target.val());
+
+            if (!isNaN(currentVal)) {
+                $target.val(currentVal + 1);
+
+            } else {
+                $target.val(0);
+            }
+
+            var kosztzaszt = parseFloat($('#kosztzasztcz' + id).val().replace(",", "."));
+            var quantity = parseInt($('#qtycz' + id).val());
+
+            var koszt = Math.round(quantity * kosztzaszt * 100) / 100;
+
+            $('#kosztcz' + id).val(koszt);
+
+            var suma = parseFloat($('#suma').val().replace(",", "."));
+            suma += kosztzaszt;
+            $('#suma').val(Math.round(suma * 100) / 100);
+
+        });
+
+
+        $(".qtyminuscz").click(function (e) {
+            e.preventDefault();
+            var $this = $(this);
+            var id = $this.prop('id').replace('minuscz', "");
+            var $target = $this.next('input[name=' + $this.attr('field') + ']');
+            var currentVal = parseInt($target.val());
+            var kosztzaszt = 0;
+
+            if (currentVal - 1 < 0) {
+                kosztzaszt = 0;
+            }
+            else {
+                kosztzaszt = parseFloat($('#kosztzasztcz' + id).val().replace(",", "."));
+            }
+
+            if (!isNaN(currentVal)) {
+                $target.val((currentVal == 0) ? 0 : currentVal - 1);
+
+            } else {
+                $target.val(0);
+            }
+
+            var quantity = parseInt($('#qtycz' + id).val());
+
+            var koszt = Math.round(quantity * kosztzaszt * 100) / 100;
+
+            if (koszt <= 0) {
+                koszt = 0;
+            }
+
+            $('#kosztcz' + id).val(koszt);
+
+            var suma = parseFloat($('#suma').val().replace(",", "."));
+
+            if (quantity < 0) {
+
+            }
+            else {
+                suma -= kosztzaszt;
+            }
+
+            if (suma < 0) {
+                suma = 0;
+            }
+
+            $('#suma').val(Math.round(suma * 100) / 100);
+        });
+    </script>
+</body>
+

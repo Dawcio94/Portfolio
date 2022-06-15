@@ -1,0 +1,60 @@
+﻿@model CarTiresService.Models.CzesciZamienne
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>Szczegóły towaru ID:@Model.CzescId</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Nazwa części")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NazwaCzesci)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Ilość")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ilosc)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Koszt sztuka")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KosztSztuka)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Typ auta")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypAuta)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Typ felgi")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypFelgi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-info btn-lg" onclick="window.location.href='@Url.Action("Edit",new { id=Model.CzescId})'">
+        Edytuj
+    </button>
+    @Html.ActionLink("Wróć do listy", "Index")
+</p>

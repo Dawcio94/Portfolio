@@ -1,0 +1,60 @@
+﻿@model CarTiresService.Models.Adresy
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>Szczegóły adresu ID:@Model.AdresId</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Miasto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Miasto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ulica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ulica)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Numer domu")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumerDomu)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Numer mieszkania")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumerMieszkania)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Kod pocztowy")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KodPocztowy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+
+    <button type="button" class="btn btn-info btn-lg" onclick="window.location.href='@Url.Action("Edit",new { id=Model.AdresId})'">
+        Edytuj
+    </button>
+    @Html.ActionLink("Wróć do listy", "Index")
+</p>

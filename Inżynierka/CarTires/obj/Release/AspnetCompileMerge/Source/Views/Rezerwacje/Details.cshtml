@@ -1,0 +1,77 @@
+﻿@model CarTiresService.Models.Rezerwacje
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<h2>Szczegóły rezerwacji ID:@Model.RezerwacjeId</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Data rezerwacji")
+        </dt>
+
+        <dd>
+            @{
+                var czasData = (DateTime)Model.DataTime;
+                var toString = czasData.ToString("dd.MM.yyyy HH:mm");
+                @Html.DisplayFor(modelItem => toString);
+            }
+
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Klient")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => (model.Klienci.Imie))
+            @Html.DisplayFor(model => (model.Klienci.Nazwisko))
+        </dd>
+        <dt>
+            @Html.DisplayName("Numer telefonu")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => (model.Klienci.NumerTelefonu))
+        </dd>
+        <dt>
+            @Html.DisplayName("Auto")
+        </dt>
+        <dd>
+            @{
+                var nazwaAuta = Model.RezerwacjaAuto.Select(s => s.Auta.NazwaAuta).ToArray();
+                var modelAuta = Model.RezerwacjaAuto.Select(s => s.Auta.ModelAuta).ToArray();
+                var numerRej = Model.RezerwacjaAuto.Select(s => s.Auta.NumerRejestracyjny).ToArray();
+                var fullAuto = nazwaAuta[0] + " " + modelAuta[0] + " " + numerRej[0];
+            }
+
+            @Html.DisplayFor(model => fullAuto)
+        </dd>
+        <dt>
+            @Html.DisplayName("Usluga")
+        </dt>
+        <dd>
+            @{
+                var nazwaUslugi = Model.RezerwacjaUsluga.Select(s => s.Uslugi.NazwaUslugi).ToArray();
+                var rodzajFelgi = Model.RezerwacjaUsluga.Select(s => s.Uslugi.TypFelgi).ToArray();
+                var kosztUslugi = Model.RezerwacjaUsluga.Select(s => s.Uslugi.Koszt).ToArray();
+                var fullUsluga = nazwaUslugi[0] + " " + rodzajFelgi[0] + " Koszt:" + kosztUslugi[0];
+            }
+
+            @Html.DisplayFor(modelItem => fullUsluga)
+        </dd>
+
+
+
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-info btn-lg" onclick="window.location.href='@Url.Action("Edit",new { id=Model.RezerwacjeId})'">
+        Edytuj
+    </button>
+    @Html.ActionLink("Wróc do listy", "Index")
+</p>

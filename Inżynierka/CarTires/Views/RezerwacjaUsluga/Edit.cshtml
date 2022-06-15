@@ -1,0 +1,49 @@
+﻿@model CarTiresService.Models.RezerwacjaUsluga
+
+@{
+    ViewBag.Title = "Edycja rezerwacji";
+}
+
+<h2>Edycja rezerwacji ID:@Model.RezerwacjaId</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.RezerwacjaUslugaId)
+
+        <div class="form-group">
+            @Html.Label("Rezerwacja "+(string)@ViewBag.RezerwacjaId, htmlAttributes: new { @class = "control-label col-md-4" })
+            @Html.ValidationMessageFor(model => model.RezerwacjaId, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Auto:"+(string)@ViewBag.AutoId, htmlAttributes: new { @class = "control-label col-md-4" })
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UslugaId, "Usługa", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="input-group">
+                @Html.DropDownList("UslugaId", null, htmlAttributes: new { @class = "control-label col-md-3" })
+                @Html.ValidationMessageFor(model => model.UslugaId, "", new { @class = "text-danger" })
+                <button type="button" class="btn btn-info" onclick="window.location.href='@Url.Action("CreateSimpleEdit", "Uslugi",new { typAuta=@ViewBag.TypAuta,rezerwacjaId=@Model.RezerwacjaId,stareKlientId=@ViewBag.StareKlientId, stareAutoId=@ViewBag.StareAutoId})'">
+                    +
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Zapisz" class="btn btn-info btn-lg" />
+                @Html.ActionLink("Anuluj", "CancelEdit", new { rezerwacjaId = Model.RezerwacjaId, stareKlientId = @ViewBag.StareKlientId, stareAutoId = @ViewBag.StareAutoId })
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("Wstecz", "Edit", "RezerwacjaAuto", new { id = @Model.RezerwacjaId, stareKlientId = @ViewBag.StareKlientId }, null)
+        </div>
+    </div>
+}

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<CarTiresService.Models.Rezerwacje>
+
+@{
+    ViewBag.Title = "Rezerwacje";
+}
+
+<h2>Rezerwacje</h2>
+
+<p>
+    @Html.ActionLink("Dodaj nową", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Data rezerwacji")
+        </th>
+        <th>
+            @Html.DisplayName("Klient")
+        </th>
+        <th>
+            @Html.DisplayName("Auto")
+        </th>
+        <th>
+            @Html.DisplayName("Usługa")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.DataTime!=null)
+                {
+                    var czasData = (DateTime)item.DataTime;
+                    var toString = czasData.ToString("dd.MM.yyyy HH:mm");
+                    @Html.DisplayFor(modelItem => toString);
+                }
+
+            </td>
+            <td>
+                @{
+                    var fullKlient = item.Klienci.Imie + " " + item.Klienci.Nazwisko;
+                    @Html.DisplayFor(modelItem => fullKlient)
+                }
+
+            </td>
+            <td>
+                @{
+                    var fullAuto = "";
+                    if (item.RezerwacjaAuto.Count!=0)
+                    {
+                        var nazwaAuta = item.RezerwacjaAuto.Select(s => s.Auta.NazwaAuta).FirstOrDefault();
+                        var modelAuta = item.RezerwacjaAuto.Select(s => s.Auta.ModelAuta).FirstOrDefault();
+                        var numerRej = item.RezerwacjaAuto.Select(s => s.Auta.NumerRejestracyjny).FirstOrDefault();
+                        fullAuto = nazwaAuta + " " + modelAuta + " " + numerRej;
+                    }
+                    else
+                    {
+                        fullAuto = "";
+                    }
+
+                }
+
+                @Html.DisplayFor(modelItem => fullAuto)
+            </td>
+            <td>
+                @{
+                    var fullUsluga = "";
+                    if (item.RezerwacjaUsluga.Count != 0)
+                    {
+                        var nazwaUslugi = item.RezerwacjaUsluga.Select(s => s.Uslugi.NazwaUslugi).FirstOrDefault();
+                        var rodzajFelgi = item.RezerwacjaUsluga.Select(s => s.Uslugi.TypFelgi).FirstOrDefault();
+                        var kosztUslugi = item.RezerwacjaUsluga.Select(s => s.Uslugi.Koszt).FirstOrDefault();
+                        fullUsluga = nazwaUslugi + " " + rodzajFelgi + " Koszt:" + kosztUslugi;
+                    }
+                    else
+                    {
+                        fullUsluga = "";
+                    }
+                }
+
+
+                @Html.DisplayFor(modelItem => fullUsluga)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.RezerwacjeId }) |
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.RezerwacjeId }) |
+                @Html.ActionLink("Usuń", "Delete", new { id = item.RezerwacjeId })
+            </td>
+        </tr>
+    }
+
+</table>

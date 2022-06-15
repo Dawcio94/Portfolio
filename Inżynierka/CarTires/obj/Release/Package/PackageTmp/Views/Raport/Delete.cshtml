@@ -1,0 +1,81 @@
+﻿@model CarTiresService.Models.Raport
+
+@{
+    ViewBag.Title = "Usuwanie raportu";
+}
+
+<h2>Usuwanie raportu o ID:@Model.RaportId</h2>
+
+<h3>Czy napewno chcesz usunąć ten raport?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayName("Rezerwacja")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rezerwacje.RezerwacjeId)
+            @Html.DisplayFor(model => model.Rezerwacje.Klienci.Imie)
+            @Html.DisplayFor(model => model.Rezerwacje.Klienci.Nazwisko)
+            @Html.DisplayFor(model => model.Rezerwacje.Klienci.NumerTelefonu)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Auto")
+        </dt>
+
+        <dd>
+            @{ var auto = @ViewBag.Auto;}
+            @Html.DisplayFor(model => auto)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Usługi")
+        </dt>
+        @{
+            foreach (var item in (@ViewBag.Uslugi as List<CarTiresService.Models.Uslugi>))
+            {
+                <dd>
+                    @Html.DisplayFor(model => item.NazwaUslugi)
+                </dd>
+            }
+        }
+
+
+        <dt>
+            @Html.DisplayName("Użyte części")
+        </dt>
+
+        @{
+            foreach (var item in (@ViewBag.Czesci as List<CarTiresService.Models.CzesciZamienne>))
+            {
+                <dd>
+                    @Html.DisplayFor(model => item.NazwaCzesci)
+                </dd>
+            }
+        }
+
+        <dt>
+            @Html.DisplayName("Koszt całkowity")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KosztCalkowity)
+        </dd>
+
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-info btn-lg" />
+            @Html.ActionLink("Anuluj", "Index")
+        </div>
+    }
+</div>

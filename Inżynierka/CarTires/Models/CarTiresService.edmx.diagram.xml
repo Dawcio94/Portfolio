@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ffdb8dd816e44392890928fcc29de04f" Name="Diagram1">
+        <EntityTypeShape EntityType="CarTiresServiceModel.Adresy" Width="1.5" PointX="1.5" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarTiresServiceModel.Auta" Width="1.5" PointX="3.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarTiresServiceModel.CzesciZamienne" Width="1.5" PointX="0.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarTiresServiceModel.Klienci" Width="1.5" PointX="1.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarTiresServiceModel.Raport" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarTiresServiceModel.RaportCzesc" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarTiresServiceModel.RaportUslugi" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarTiresServiceModel.RezerwacjaAuto" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarTiresServiceModel.RezerwacjaUsluga" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarTiresServiceModel.Rezerwacje" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarTiresServiceModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarTiresServiceModel.Uslugi" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__Klienci__AdresId__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__Auta__KlientId__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__Rezerwacj__AutoI__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__Rezerwacj__AutoI__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__RaportCze__Czesc__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__RaportCze__Czesc__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__Rezerwacj__Klien__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__Raport__Rezerwac__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__RaportCze__Rapor__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__RaportUsl__Rapor__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__RaportUsl__Uslug__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__RaportUsl__Uslug__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__Rezerwacj__Rezer__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__Rezerwacj__Rezer__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__Rezerwacj__Uslug__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="CarTiresServiceModel.FK__Rezerwacj__Uslug__5535A963" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

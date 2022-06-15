@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - System do zarządzania serwisem samochodowym</title>
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                Serwis wulkanizacyjny-Lux Auto
+            </a>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Rezerwacje")">Rezerwacje</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Kalendarz")">Kalendarz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Raport")">Raporty</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "CzesciZamienne")">Magazyn</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Klienci")">Klienci</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Adresy")">Adresy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Auta")">Pojazdy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Uslugi")">Usługi</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+    <div style="bottom:0;position: fixed; width:100%;">
+        <footer>
+            <p>&copy; 2022 Dawid Gawiński - Serwis wulkanizacyjny-Lux Auto</p>
+        </footer>
+    </div>
+
+    <script src="/Scripts/jquery-3.6.0.js"></script>
+    <script src="/bundles/bootstrap"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

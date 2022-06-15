@@ -1,0 +1,30 @@
+﻿@model CarTiresService.Models.Raport
+
+@{
+    ViewBag.Title = "Tworzenie raportu";
+}
+
+<h2>Stwórz nowy raport</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.RezerwacjaId, "Rezerwacja", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @Html.DropDownList("RezerwacjaId", null, "Wybierz rezerwacje", htmlAttributes: new { @class = "control-label" })
+                @Html.ValidationMessageFor(model => model.RezerwacjaId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Dalej" class="btn btn-info btn-lg" />
+                @Html.ActionLink("Anuluj", "Index")
+            </div>
+        </div>
+    </div>
+}

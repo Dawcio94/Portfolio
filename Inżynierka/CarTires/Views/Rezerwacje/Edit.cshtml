@@ -1,0 +1,62 @@
+﻿@model CarTiresService.Models.Rezerwacje
+
+@{
+    ViewBag.Title = "Edycja rezerwacji " + Model.RezerwacjeId;
+}
+
+<h2>Edycja rezerwacji ID:@Model.RezerwacjeId</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.RezerwacjeId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KlientId, "Klient", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="input-group">
+                @Html.DropDownList("KlientId", null, "Wybierz klienta", htmlAttributes: new { @class = "control-label col-md-7" })
+                @Html.ValidationMessageFor(model => model.KlientId, "", new { @class = "text-danger" })
+                <button type="button" class="btn btn-info btn-sm" onclick="window.location.href='@Url.Action("CreateSimpleEdit", "Klienci",new  { id=@Model.RezerwacjeId,stareKlientId=@ViewBag.StareKlientId })'">
+                    +
+                </button>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataTime, "Data i czas", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @{
+                    var todayData = DateTime.Now.Date.ToString("yyyy-MM-dd");
+                    var todayTime = DateTime.Now.TimeOfDay.ToString("hh\\:mm");
+                    var today = todayData+"T"+todayTime;
+                    var rezerwacjaData = Model.DataTime.Value.Date.ToString("yyyy-MM-dd");
+                    var rezeracjaTime = Model.DataTime.Value.TimeOfDay.ToString("hh\\:mm");
+                    var rezerwacja = rezerwacjaData+"T"+rezeracjaTime;
+
+                }
+                <input type="datetime-local" name="rezerwacjatime" value=@rezerwacja min=@today>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="hidden" value="@ViewBag.StareKlientId" name="stareKlientId" />
+                <input type="submit" value="Dalej" class="btn btn-info btn-lg" />
+                @Html.ActionLink("Anuluj", "Index")
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
